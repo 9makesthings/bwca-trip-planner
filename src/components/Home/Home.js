@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 
 
-class MyTrips extends Component {
+class Home extends Component {
     render() {
         return(
             <div>
-                <h2>This will display all of my trips!</h2>
+                <h2>This is the home page!</h2>
             </div>
         );
     }
 }
 
-export default MyTrips;
+export default Home;
