@@ -22,7 +22,7 @@ class CreateTrip extends Component {
     handleNext = () => {
         if( this.props.reduxState.progress < 4 ){
             this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
-        } else if( this.props.reduxState.progress = 4 ) {
+        } else if( this.props.reduxState.progress === 4 ) {
             this.props.dispatch( {type: 'RESET_ACTIVE_STEP'} );
         }
     };
@@ -68,6 +68,5 @@ class CreateTrip extends Component {
 const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
-
 
 export default connect( mapReduxStateToProps )(CreateTrip);

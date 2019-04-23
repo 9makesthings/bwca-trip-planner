@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+
 
 // Material
 import Card from '@material-ui/core/Card';
@@ -9,7 +11,9 @@ import CardContent from '@material-ui/core/CardContent';
 
 class StepTwo extends Component {
 
-    
+    componentDidMount() {
+        this.props.dispatch( {type: 'GET_ROUTE_DATA'} );
+    }
 
     render() {
 
@@ -20,7 +24,7 @@ class StepTwo extends Component {
 
                 <Card>
                     <CardContent>
-                        
+
                     </CardContent>
 
                 </Card>
@@ -29,4 +33,8 @@ class StepTwo extends Component {
     }
 }
 
-export default StepTwo;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState,
+});
+
+export default connect( mapReduxStateToProps )(StepTwo);
