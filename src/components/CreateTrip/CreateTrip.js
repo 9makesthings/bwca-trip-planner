@@ -20,7 +20,11 @@ import SaveTrip from './SaveTrip/SaveTrip';
 class CreateTrip extends Component {
     
     handleNext = () => {
-      this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
+        if( this.props.reduxState.progress < 4 ){
+            this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
+        } else if( this.props.reduxState.progress = 4 ) {
+            this.props.dispatch( {type: 'RESET_ACTIVE_STEP'} );
+        }
     };
   
     handleBack = () => {

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 
 // Material
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 
 
@@ -15,9 +18,12 @@ class StepTwo extends Component {
 
                 <p>Step Two!</p>
 
-                <form>
+                <Card>
+                    <CardContent>
+                        
+                    </CardContent>
 
-                </form>
+                </Card>
             </div>
         );
     }
