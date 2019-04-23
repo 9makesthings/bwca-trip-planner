@@ -9,7 +9,7 @@ class Home extends Component {
     // FIX THIS! 
     routeCreateTrip = (event) => {
         event.preventDefault();
-        this.props.history.push('/create-trip');
+        this.props.history.push('/create-trip/step-one');
     }
 
     routeMyTrips = () => {

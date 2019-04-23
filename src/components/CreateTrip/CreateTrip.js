@@ -26,21 +26,6 @@ class CreateTrip extends Component {
     handleBack = () => {
       this.props.dispatch( {type: 'BACK_ACTIVE_STEP'} );
     };
-    
-    // componentDidMount(){
-    //     switch (this.props.reduxState.progress) {
-    //         case 0:
-    //             return this.props.history.push('/create-trip/step-one');
-    //         case 1:
-    //             return this.props.history.push('/create-trip/step-two');
-    //         case 2:
-    //             return this.props.history.push('/create-trip/step-three');
-    //         case 3:
-    //             return this.props.history.push('/create-trip/step-four');
-    //         default:
-    //             return this.props.history.push('/create-trip/save-trip');
-    //     }
-    // }
 
     render() {
         const activeStep = this.props.reduxState.progress;
