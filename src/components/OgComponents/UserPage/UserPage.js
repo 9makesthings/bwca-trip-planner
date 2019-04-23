@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import LogOutButton from '../../LogOutButton/LogOutButton';
 
 // *** I may use this as a header for the MyTrips page.
 

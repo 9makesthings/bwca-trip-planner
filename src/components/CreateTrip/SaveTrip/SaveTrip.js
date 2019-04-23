@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 
 
-class StepTwo extends Component {
+class SaveTrip extends Component {
 
     
 
@@ -13,7 +13,7 @@ class StepTwo extends Component {
         return(
             <div>
 
-                <p>Step Two!</p>
+                <p>Save Trip?</p>
 
                 <form>
 
@@ -23,4 +23,4 @@ class StepTwo extends Component {
     }
 }
 
-export default StepTwo;
+export default SaveTrip;

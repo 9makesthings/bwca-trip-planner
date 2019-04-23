@@ -6,13 +6,16 @@ import Button from '@material-ui/core/Button';
 
 class Home extends Component {
 
-    handleRoute = (event) => {
-        if( event.target.name === "create-trip") {
-            this.props.history.push('/create-trip');
-        } else {
-            this.props.history.push('/my-trips');
-        }
+    // FIX THIS! 
+    routeCreateTrip = (event) => {
+        event.preventDefault();
+        this.props.history.push('/create-trip');
     }
+
+    routeMyTrips = () => {
+        this.props.history.push('/my-trips');
+    }
+
     render() {
         return(
             <div>
@@ -21,11 +24,11 @@ class Home extends Component {
 
                     <p>This is some intro text...</p>
 
-                    <Button onClick={this.handleRoute} name="create-trip" >Plan a Trip</Button>
-                    <Button onClick={this.handleRoute} name="my-trips" >My Trips</Button>
+                    <Button onClick={this.routeCreateTrip} value="createTrip" >Plan a Trip</Button>
+                    <Button onClick={this.routeMyTrips} value="myTrips" >My Trips</Button>
                 </div>
                 <div className="div-right" >
-                    <img src="https://images.unsplash.com/photo-1510857817970-2a7060a55c8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt="BWCA Image" />
+                    <img src="https://images.unsplash.com/photo-1510857817970-2a7060a55c8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt="BWCA" />
                 </div>
             </div>
         );
