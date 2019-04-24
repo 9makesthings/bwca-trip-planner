@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {
-  HashRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
 
 // Material UI
 import Button from '@material-ui/core/Button';
@@ -33,33 +28,37 @@ class CreateTrip extends Component {
 
     render() {
         const activeStep = this.props.reduxState.progress;
+        let stepPath;
+        if( activeStep === 0 ){
+                stepPath = <StepOne />;
+            } else if( activeStep === 1 ){
+                stepPath = <StepTwo />;
+            } else if( activeStep === 2 ){
+                stepPath = <StepThree />;
+            } else if( activeStep === 3 ){
+                stepPath = <StepFour />;
+            } else {
+                stepPath = <SaveTrip />;
+            }
 
         return(
-            <Router>
-                <div>
-                    <ProgressBar />
+            <div>
+                <ProgressBar />
 
-                    {/* Step components go here */}
-                    <Switch>
-                        <Route path='/create-trip/step-one' component={StepOne} />
-                        <Route path='/create-trip/step-two' component={StepTwo} />
-                        <Route path='/create-trip/step-three' component={StepThree} />
-                        <Route path='/create-trip/step-four' component={StepFour} />
-                        <Route path='/create-trip/save-trip' component={SaveTrip} />
-                    </Switch>
+                {/* Step components go here */}
 
-                    <Button
-                        disabled={activeStep === 0}
-                        onClick={this.handleBack} >
-                            Back
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={this.handleNext}>
-                        {activeStep === 4 ? 'Save' : 'Next'}
-                    </Button>
+                {stepPath}
 
-                </div>
+                <Button
+                    disabled={activeStep === 0}
+                    onClick={this.handleBack} >
+                        Back
+                </Button>
+                <Button variant="contained" color="primary" onClick={this.handleNext}>
+                    {activeStep === 4 ? 'Save' : 'Next'}
+                </Button>
 
-            </Router>
+            </div>
         );
     }
 }
