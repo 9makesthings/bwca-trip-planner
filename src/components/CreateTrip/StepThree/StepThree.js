@@ -1,26 +1,48 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import NextButton from '../NextButton';
 
 // Material
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 
 class StepThree extends Component {
 
-    
+    state = {
+        something: ''
+    }
 
     render() {
+        const stepAction = {type: 'SET_PACKLIST', payload: this.state};
 
         return(
             <div>
+                <FormControl>
+                    <FormGroup>
 
-                <p>Step Three!</p>
+                        {/* This will map and create a checkbox for each item */}
+                        <FormControlLabel
+                            control={
+                                <Checkbox onChange={this.handlechange} value="something" />
+                            }
+                            label="Something!"
+                        />
 
-                <form>
+                    </FormGroup>
+                </FormControl>
 
-                </form>
+                <NextButton action={stepAction} />
             </div>
         );
     }
 }
 
-export default StepThree;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState,
+});
+
+export default connect( mapReduxStateToProps )(StepThree);

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import NextButton from '../NextButton';
 
 
 // Material
@@ -13,7 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 class StepTwo extends Component {
 
     state = {
-        chosenRoute: '',
+        route_id: '',
     }
 
     componentDidMount() {
@@ -31,19 +32,17 @@ class StepTwo extends Component {
 
     addRoute = (event) => {
         this.setState({
-            chosenRoute: event.currentTarget.value,
+            route_id: event.currentTarget.value,
         });
         console.log( `Chosen route id:`, event.currentTarget.value );
         
     }
 
     render() {
+        const stepAction = {type: 'ADD_ROUTE_ID', payload: this.state};
 
         return(
             <div>
-
-                <p>Step Two!</p>
-
                 {this.props.reduxState.routeData.map( route => 
                         // <RouteCard key={route.id} route={route} />
                         <Card key={route.id} >
@@ -68,6 +67,8 @@ class StepTwo extends Component {
 
                         </Card>
                     )}
+
+                <NextButton action={stepAction} />
             </div>
         );
     }
