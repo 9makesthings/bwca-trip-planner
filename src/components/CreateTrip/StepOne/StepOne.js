@@ -3,12 +3,13 @@ import React, {Component} from 'react';
 // Material
 import TextField from '@material-ui/core/TextField';
 import Slider from '@material-ui/lab/Slider';
+// import Button from '@material-ui/core/Button';
 
 class StepOne extends Component {
 
     state = {
-            groupSize: 1,
-            days: 2,
+            group_size: 1,
+            number_days: 2,
             difficulty: 3
     };
 
@@ -28,9 +29,14 @@ class StepOne extends Component {
             ...this.state,
             difficulty });
     };
+    
+    handleNext = () => {
+        this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
+        this.props.dispatch( {type: 'ADD_FIRST_DETAILS', payload: this.state} );
+    };
 
     render() {
-        const { groupSize, days, difficulty } = this.state;
+        const { group_size, number_days, difficulty } = this.state;
 
         return(
             <div>
@@ -42,8 +48,8 @@ class StepOne extends Component {
                         <label>How many people will be in your trip's party?</label>
                         <br/>
                         <TextField type="number" min="1" max="9"
-                                value={groupSize}
-                                name="groupSize" 
+                                value={group_size}
+                                name="group_size" 
                                 onChange={this.handleChange} />
                     </div>
 
@@ -51,8 +57,8 @@ class StepOne extends Component {
                         <label>How many days would you like to go?</label>
                         <br/>
                         <TextField type="number" min="2" max="20"
-                                value={days}
-                                name="days" 
+                                value={number_days}
+                                name="number_days" 
                                 onChange={this.handleChange} />
                     </div>
 
@@ -62,13 +68,14 @@ class StepOne extends Component {
                         <br/>
                         <Slider
                             min={1} max={5} 
-                            // step={1}
+                            step={1}
                             value={difficulty}
                             name="difficulty"
                             onChange={this.handleSliderChange} />
                     </div>
 
                 </form>
+
             </div>
         );
     }

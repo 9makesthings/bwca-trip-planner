@@ -6,6 +6,9 @@ const router = express.Router();
  * GET routes
  */
 router.get('/', (req, res) => {
+    const newTrip = req.body;
+    console.log( `in GET tripRoute...`, newTrip );
+    
     
     // use WHERE with difficulty, days > min & < max
     // to get routes specific to user's preferences

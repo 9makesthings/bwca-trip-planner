@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* getRoute() {
+function* getRoute(action) {
     try {
-        const response = yield axios.get( '/api/tripRoute' );
+        const response = yield axios.get( '/api/tripRoute', action.payload );
         yield put( {type: 'SET_ROUTE_DATA', payload: response.data} );
     }
     catch (error) {

@@ -48,7 +48,6 @@ class CreateTrip extends Component {
                         <Route path='/create-trip/save-trip' component={SaveTrip} />
                     </Switch>
 
-
                     <Button
                         disabled={activeStep === 0}
                         onClick={this.handleBack} >

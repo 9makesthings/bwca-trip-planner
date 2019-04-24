@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 
 // Material
+import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,8 +12,27 @@ import CardContent from '@material-ui/core/CardContent';
 
 class StepTwo extends Component {
 
+    state = {
+        chosenRoute: '',
+    }
+
     componentDidMount() {
-        this.props.dispatch( {type: 'GET_ROUTE_DATA'} );
+        // get trip details, difficulty and number_days, 
+        // and send as payload
+        const newTripData = this.props.reduxState.newTrip;
+        console.log( `newTripData...`, newTripData );
+        
+        // const number_days = this.props.reduxState.newTrip.number_days;
+
+        this.props.dispatch( {type: 'GET_ROUTE_DATA', payload: newTripData } );
+    }
+
+    addRoute = (event) => {
+        this.setState({
+            chosenRoute: event.currentTarget.value,
+        });
+        console.log( `Chosen route id:`, event.currentTarget.value );
+        
     }
 
     render() {
@@ -22,12 +42,30 @@ class StepTwo extends Component {
 
                 <p>Step Two!</p>
 
-                <Card>
-                    <CardContent>
+                {this.props.reduxState.routeData.map( route => 
+                        // <RouteCard key={route.id} route={route} />
+                        <Card key={route.id} >
+                            <CardContent>
+                                <div>
+                                    <img src={route.image_url} alt={route.name} />
+                                </div>
 
-                    </CardContent>
+                                <div>
+                                    <h4>{route.name}</h4>
 
-                </Card>
+                                    <p>{route.distance} miles, {route.min_days} to {route.max_days} days</p>
+                                    <p>{route.description}</p>
+                                </div>
+                            </CardContent>
+
+                            <CardActions>
+                                <Button variant="outlined" size="small"
+                                        value={route.id}
+                                        onClick={this.addRoute} >Select route</Button>
+                            </CardActions>
+
+                        </Card>
+                    )}
             </div>
         );
     }
