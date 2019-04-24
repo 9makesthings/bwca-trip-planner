@@ -20,27 +20,27 @@ class StepThree extends Component {
         this.props.dispatch( {type: 'GET_EQUIPMENT'} );
     }
 
-    componentDidUpdate(prevProps) {
-        console.log( this.props.reduxState.equipment, this.state );
-        const equipment = [this.props.reduxState.equipment];
-        console.log( `equipment:`, equipment );
+    // componentDidUpdate(prevProps) {
+    //     console.log( this.props.reduxState.equipment, this.state );
+    //     const equipment = [this.props.reduxState.equipment];
+    //     console.log( `equipment:`, equipment );
         
 
-        // if (this.props.reduxState.equipment !== prevProps.reduxState.equipment) {
+    //     // if (this.props.reduxState.equipment !== prevProps.reduxState.equipment) {
 
-        //     for( let i=0; i<equipment.length; i++ ){
-        //         this.setState({
-        //             ...this.state,
-        //             [equipment[i].name]: {
-        //                 ...this.state.equipment[i].name,
-        //                 equipment_code: equipment[i].code, 
-        //                 status: false,
-        //             }
-        //         })
-        //     }
-        //     console.log( `componentDidUpdate...`, this.state );
-        // }
-    }
+    //     //     for( let i=0; i<equipment.length; i++ ){
+    //     //         this.setState({
+    //     //             ...this.state,
+    //     //             [equipment[i].name]: {
+    //     //                 ...this.state.equipment[i].name,
+    //     //                 equipment_code: equipment[i].code, 
+    //     //                 status: false,
+    //     //             }
+    //     //         })
+    //     //     }
+    //     //     console.log( `componentDidUpdate...`, this.state );
+    //     // }
+    // }
 
     handlechange = (event) => {
         console.log( `in handleChange...`, this.state );
