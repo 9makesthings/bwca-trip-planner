@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* getRoute(action) {
     try {
-        const response = yield axios.get( '/api/tripRoute', action.payload );
+        const response = yield axios.get( `/api/tripRoute/${action.payload.difficulty}/${action.payload.days}` );
         yield put( {type: 'SET_ROUTE_DATA', payload: response.data} );
     }
     catch (error) {

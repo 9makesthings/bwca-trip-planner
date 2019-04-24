@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+
+import NextButton from '../NextButton';
 
 // Material
 import TextField from '@material-ui/core/TextField';
@@ -8,9 +11,9 @@ import Slider from '@material-ui/lab/Slider';
 class StepOne extends Component {
 
     state = {
-            group_size: 1,
-            number_days: 2,
-            difficulty: 3
+            group_size: this.props.reduxState.newTrip.group_size,
+            number_days: this.props.reduxState.newTrip.number_days,
+            difficulty: this.props.reduxState.newTrip.difficulty
     };
 
     handleChange = (event) => {
@@ -30,19 +33,13 @@ class StepOne extends Component {
             difficulty });
     };
     
-    handleNext = () => {
-        this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
-        this.props.dispatch( {type: 'ADD_FIRST_DETAILS', payload: this.state} );
-    };
 
     render() {
         const { group_size, number_days, difficulty } = this.state;
+        const stepAction = {type: 'ADD_FIRST_DETAILS', payload: this.state};
 
         return(
             <div>
-
-                <p>Step One!</p>
-
                 <form>
                     <div>
                         <label>How many people will be in your trip's party?</label>
@@ -73,12 +70,16 @@ class StepOne extends Component {
                             name="difficulty"
                             onChange={this.handleSliderChange} />
                     </div>
-
                 </form>
 
+                <NextButton action={stepAction} />
             </div>
         );
     }
 }
 
-export default StepOne;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState,
+});
+
+export default connect( mapReduxStateToProps )(StepOne);

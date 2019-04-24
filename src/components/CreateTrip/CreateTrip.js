@@ -14,13 +14,6 @@ import SaveTrip from './SaveTrip/SaveTrip';
 
 class CreateTrip extends Component {
     
-    handleNext = () => {
-        if( this.props.reduxState.progress < 4 ){
-            this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
-        } else if( this.props.reduxState.progress === 4 ) {
-            this.props.dispatch( {type: 'RESET_ACTIVE_STEP'} );
-        }
-    };
   
     handleBack = () => {
       this.props.dispatch( {type: 'BACK_ACTIVE_STEP'} );
@@ -46,16 +39,12 @@ class CreateTrip extends Component {
                 <ProgressBar />
 
                 {/* Step components go here */}
-
                 {stepPath}
 
                 <Button
                     disabled={activeStep === 0}
                     onClick={this.handleBack} >
                         Back
-                </Button>
-                <Button variant="contained" color="primary" onClick={this.handleNext}>
-                    {activeStep === 4 ? 'Save' : 'Next'}
                 </Button>
 
             </div>
