@@ -13,7 +13,22 @@ import Checkbox from '@material-ui/core/Checkbox';
 class StepThree extends Component {
 
     state = {
-        something: ''
+        packlist: this.props.reduxState.equipment
+    }
+
+    componentDidMount() {
+        this.props.dispatch( {type: 'GET_EQUIPMENT'} );
+    }
+
+    handlechange = (event) => {
+
+        // if( event.target.key = )
+        // this.setState({
+        //     packlist: [
+        //         ...this.state.packlist,
+        //         event.currentTarget.key: 
+        //     ]
+        // })
     }
 
     render() {
@@ -25,12 +40,15 @@ class StepThree extends Component {
                     <FormGroup>
 
                         {/* This will map and create a checkbox for each item */}
-                        <FormControlLabel
-                            control={
-                                <Checkbox onChange={this.handlechange} value="something" />
-                            }
-                            label="Something!"
-                        />
+                        {this.props.reduxState.equipment.map( item => 
+                                <FormControlLabel key={item.id}
+                                    control={
+                                        <Checkbox onChange={this.handlechange} value={item.name} />
+                                    }
+                                    label={item.name}
+                                />
+                            
+                            )}
 
                     </FormGroup>
                 </FormControl>

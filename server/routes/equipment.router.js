@@ -9,6 +9,7 @@ const router = express.Router();
 router.get('/', rejectUnauthenticated, (req, res) => {
     
     let sqlText = `SELECT * FROM "equipment"
+                    WHERE "type" = 'shared'
                     ORDER BY "code";`;
 
     pool.query( sqlText )
