@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { MenuItem } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 // Material
 import InputLabel from '@material-ui/core/InputLabel';
@@ -11,6 +12,10 @@ class StepFour extends Component {
 
     state = {
         mealStatus: '',
+    }
+
+    componentDidMount() {
+        this.props.dispatch( {type: 'GET_MEAL_LIST'} );
     }
 
     handleChange = (event) => {
@@ -42,10 +47,14 @@ class StepFour extends Component {
                 </form>
                 
                 {mealPlan}
-                
+
             </div>
         );
     }
 }
 
-export default StepFour;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState,
+});
+
+export default connect( mapReduxStateToProps )(StepFour);
