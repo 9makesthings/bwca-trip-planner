@@ -13,34 +13,36 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 class StepThree extends Component {
 
+    equipmentArray = [];
+
     state = {
+        equipment: this.equipmentArray
     }
 
     componentDidMount() {
         this.props.dispatch( {type: 'GET_EQUIPMENT'} );
     }
 
-    // componentDidUpdate(prevProps) {
-    //     console.log( this.props.reduxState.equipment, this.state );
-    //     const equipment = [this.props.reduxState.equipment];
-    //     console.log( `equipment:`, equipment );
-        
 
-    //     // if (this.props.reduxState.equipment !== prevProps.reduxState.equipment) {
+    componentDidUpdate(prevProps) {
+        // console.log( this.props.reduxState.equipment, this.state );
+        console.log( `equipment:`, this.equipmentArray );
+         
+        if (this.props.reduxState.equipment !== prevProps.reduxState.equipment) {
 
-    //     //     for( let i=0; i<equipment.length; i++ ){
-    //     //         this.setState({
-    //     //             ...this.state,
-    //     //             [equipment[i].name]: {
-    //     //                 ...this.state.equipment[i].name,
-    //     //                 equipment_code: equipment[i].code, 
-    //     //                 status: false,
-    //     //             }
-    //     //         })
-    //     //     }
-    //     //     console.log( `componentDidUpdate...`, this.state );
-    //     // }
-    // }
+            this.props.reduxState.equipment.map( item => {
+                let equipmentItem = {
+                    [item.name]: {
+                        equipment_code: item.code, 
+                        status: false,
+                    }
+                };
+                this.equipmentArray.push(equipmentItem);
+                return this.equipmentArray;
+            })
+            console.log( `componentDidUpdate...`, this.state );
+        }
+    }
 
     handlechange = (event) => {
         console.log( `in handleChange...`, this.state );

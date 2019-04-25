@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { MenuItem } from '@material-ui/core';
 import { connect } from 'react-redux';
+import NextButton from '../NextButton';
 
 // Material
 import InputLabel from '@material-ui/core/InputLabel';
@@ -27,7 +27,9 @@ class StepFour extends Component {
     }
 
     render() {
-        const mealPlan;
+        const stepAction = {type: 'SET_MEALPLAN', payload: this.state};
+        const mealPlan = '';
+        // OR should this be in a ternary and/or conditionally rendered components?
         if( this.state.mealStatus === 'Pack my own' ){
             mealPlan = <p>This will be the meal-planning table!</p>;
         } else {
@@ -48,6 +50,7 @@ class StepFour extends Component {
                 
                 {mealPlan}
 
+                <NextButton action={stepAction} />
             </div>
         );
     }
