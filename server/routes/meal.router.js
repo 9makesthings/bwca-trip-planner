@@ -4,12 +4,11 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET equipment
+ * GET meals
  */
 router.get('/', rejectUnauthenticated, (req, res) => {
     
-    let sqlText = `SELECT * FROM "equipment"
-                    WHERE "type" = 'shared'
+    let sqlText = `SELECT * FROM "meal"
                     ORDER BY "code";`;
 
     pool.query( sqlText )
@@ -17,7 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.send( result.rows );
         })
         .catch( (error) => {
-            console.log( `Couldn't get equipment list.`, error );
+            console.log( `Couldn't get meal list.`, error );
             res.sendStatus(500);
         })
 });
