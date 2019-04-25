@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import NextButton from '../NextButton';
 
 // Material
-import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Table from '@material-ui/core/Table';
@@ -15,10 +14,11 @@ import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
 
 
-class StepFour extends Component {
+class MealPlan extends Component {
 
     state = {
-        mealStatus: '',
+        breakfast: '',
+        lunch: '',
     }
 
     componentDidMount() {
@@ -35,30 +35,10 @@ class StepFour extends Component {
 
     render() {
         const stepAction = {type: 'SET_MEALPLAN', payload: this.state};
-        let mealPlan;
-        // OR should this be in a ternary and/or conditionally rendered components?
-        if( this.state.mealStatus === 'Pack my own' ){
-            mealPlan = <p>This will be the meal-planning table!</p>;
-        } else if( this.state.mealStatus === 'Get outfitted' ){
-            mealPlan = <p>Here are some outfitters you could connect with!</p>;
-        }
         // const breakfastList = this.props.reduxState.mealList;
 
         return(
             <div>
-
-                <form>
-                    <InputLabel>Would you like to pack your own meals or find an outfitter to pack them?</InputLabel>
-                    <Select value={this.state.mealStatus}
-                            onChange={this.handleChange} >
-                        <MenuItem value="Pack my own" >Pack my own</MenuItem>
-                        <MenuItem value="Get outfitted" >Get outfitted</MenuItem>
-                    </Select>
-                </form>
-                
-                {mealPlan}
-
-
                 <Paper>
                     <Table>
                         <TableHead>
@@ -96,4 +76,4 @@ const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
 
-export default connect( mapReduxStateToProps )(StepFour);
+export default connect( mapReduxStateToProps )(MealPlan);

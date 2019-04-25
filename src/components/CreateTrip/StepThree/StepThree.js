@@ -13,73 +13,76 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 class StepThree extends Component {
 
-    equipmentArray = [];
 
     state = {
-        equipment: this.equipmentArray
+        equipment: {}
     }
 
     componentDidMount() {
         this.props.dispatch( {type: 'GET_EQUIPMENT'} );
     }
 
-
     componentDidUpdate(prevProps) {
-        // console.log( this.props.reduxState.equipment, this.state );
-        console.log( `equipment:`, this.equipmentArray );
-         
         if (this.props.reduxState.equipment !== prevProps.reduxState.equipment) {
+            // create temporary new object
+            let equipObject = {};
 
-            this.props.reduxState.equipment.map( item => {
-                let equipmentItem = {
-                    [item.name]: {
-                        equipment_code: item.code, 
-                        status: false,
-                    }
+            for(let i = 0; i < this.props.reduxState.equipment.length; i++) {
+                let item = this.props.reduxState.equipment[i];
+                console.log( 'item:', item );
+                // create a property with the item code as the "name"/"key"
+                equipObject[item.code] = {
+                    name: item.name, 
+                    status: false,
                 };
-                this.equipmentArray.push(equipmentItem);
-                return this.equipmentArray;
-            })
-            console.log( `componentDidUpdate...`, this.state );
+            }
+            console.log( equipObject );
+            
+            this.setState({
+                equipment: equipObject,
+            });
+
+            console.log( `componentDidUpdate... current state:`, this.state );
         }
     }
 
     handlechange = (event) => {
         console.log( `in handleChange...`, this.state );
-        const item = event.currentTarget.name;
+        const item = event.currentTarget.id;
         
         this.setState({
-            ...this.state,
-            [item]: {
-                ...this.state.item,
-                equipment_code: event.currentTarget.id, 
-                status: true,
+            equipment: {
+                ...this.state.equipment,
+                [item]: {
+                    ...this.state.equipment[item],
+                    status: !this.state.equipment[item].status,
+                }
             }
         })
     }
     
 
     render() {
-        const stepAction = {type: 'SET_PACKLIST', payload: this.state};
+        const stepAction = {type: 'SET_EQUIPMENT', payload: this.state};
+        // const itemStatus = this.state.equipment[item].status;
 
         return(
             <div>
-                <FormControl>
-                    <FormGroup>
+                {/* {JSON.stringify(this.state.equipment)} */}
+                <FormGroup>
 
                         {/* This will map and create a checkbox for each item */}
 
                         {this.props.reduxState.equipment.map( item => 
                                 <FormControlLabel key={item.code}
                                     control={
-                                        <Checkbox name={item.name} id={item.code} value={this.state.name} onChange={this.handlechange} />
+                                        <Checkbox name={item.name} id={item.code} onChange={this.handlechange} />
                                     }
                                     label={item.name}
                                 />
                             )}
 
-                    </FormGroup>
-                </FormControl>
+                </FormGroup>
 
                 <NextButton action={stepAction} />
             </div>
