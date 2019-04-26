@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import NextButton from '../NextButton';
+import '../CreateTrip.css';
 
 // Material
 import Card from '@material-ui/core/Card';
@@ -23,14 +24,14 @@ class SaveTrip extends Component {
         return(
             <div>
                 <div>
-                    <h4>Trip Name</h4>
+                    <h4>{tripData.name}</h4>
                     <p>{tripData.group_size} people
                     <br/> {tripData.number_days} days
                     </p>
                 </div>
 
                 <div>
-                    <Card >
+                    <Card className="route-card" >
                         <CardContent>
                             <div>
                                 <img src={route.image_url} alt={route.name} />

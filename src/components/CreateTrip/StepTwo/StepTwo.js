@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import NextButton from '../NextButton';
+import '../CreateTrip.css';
 
 
 // Material
@@ -46,7 +47,7 @@ class StepTwo extends Component {
             <div>
                 {this.props.reduxState.routeData.map( route => 
                         // <RouteCard key={route.id} route={route} />
-                        <Card key={route.id} >
+                        <Card key={route.id} className="route-card" >
                             <CardContent>
                                 <div>
                                     <img src={route.image_url} alt={route.name} />

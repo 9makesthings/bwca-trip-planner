@@ -10,7 +10,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 import FormControl from '@material-ui/core/FormControl';
 
 
@@ -45,7 +45,7 @@ class MealPlan extends Component {
 
         return(
             <div>
-                <Paper>
+                <Card className="meal-table" >
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -102,7 +102,7 @@ class MealPlan extends Component {
 
                         </TableBody>
                     </Table>
-                </Paper>
+                </Card>
 
                 <NextButton action={stepAction} />
             </div>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 function* saveNewTrip(action) {
     try {
@@ -24,11 +24,24 @@ function* getUsersTrips(action) {
     }
 }
 
+function* deleteTrip(action) {
+    try {
+        yield axios.delete( `/api/trip/${action.payload.trip_id}` );
+        console.log( `user id:`, action.payload.user_id );
+        yield put( {type: 'GET_USER_TRIPS', payload: action.payload.user_id} );
+    }
+    catch (error) {
+        console.log( `Couldn't delete trip.`, error );
+        alert( `Couldn't delete trip at this time. Try again later.`);
+    }
+}
+
 
 function* tripSaga() {
     yield takeLatest('SAVE_TRIP', saveNewTrip);
     // GET all trips saved by current user
-    yield takeLatest('GET_USER_TRIPS', getUsersTrips);
+    yield takeEvery('GET_USER_TRIPS', getUsersTrips);
+    yield takeLatest('DELETE_TRIP', deleteTrip);
     // UPDATE_TRIP
     // GET_TRIP_BY_ID
   }

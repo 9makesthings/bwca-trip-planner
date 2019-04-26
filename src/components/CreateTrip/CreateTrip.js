@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-// Material UI
-import Button from '@material-ui/core/Button';
-
 import ProgressBar from './ProgressBar';
 import StepOne from './StepOne/StepOne';
 import StepTwo from './StepTwo/StepTwo';

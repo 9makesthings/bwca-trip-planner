@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import MealPlan from './MealPlan';
+import '../CreateTrip.css'
 
 // Material
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Card from '@material-ui/core/Card';
 
 
 class StepFour extends Component {
@@ -35,19 +37,20 @@ class StepFour extends Component {
 
         return(
             <div>
+                <Card className="step-card" >
+                    {/* <form> */}
+                        <InputLabel>Would you like to pack your own meals or find an outfitter to pack them?</InputLabel>
+                        <br/>
+                        <Select value={this.state.mealStatus}
+                                onChange={this.handleChange} >
+                            <MenuItem value="Pack my own" >Pack my own</MenuItem>
+                            <MenuItem value="Get outfitted" >Get outfitted</MenuItem>
+                        </Select>
+                    {/* </form>  */}
 
-                <form>
-                    <InputLabel>Would you like to pack your own meals or find an outfitter to pack them?</InputLabel>
-                    <Select value={this.state.mealStatus}
-                            onChange={this.handleChange} >
-                        <MenuItem value="Pack my own" >Pack my own</MenuItem>
-                        <MenuItem value="Get outfitted" >Get outfitted</MenuItem>
-                    </Select>
-                </form>
+                </Card>
                 
                 {mealPlan}
-
-                <MealPlan />
 
             </div>
         );

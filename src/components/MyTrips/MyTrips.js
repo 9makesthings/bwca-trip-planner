@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import './MyTrips.css';
 
 // Material UI
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 
 
 class MyTrips extends Component {
@@ -11,17 +13,30 @@ class MyTrips extends Component {
         this.props.dispatch( {type: 'GET_USER_TRIPS', payload: this.props.reduxState.user.id} );
     }
 
+    handleDelete = (event) => {
+        console.log( event.currentTarget.value );
+        const deleteData = {
+            trip_id: event.currentTarget.value,
+            user_id: this.props.reduxState.newTrip.user_id
+        }
+        
+        this.props.dispatch( {type: 'DELETE_TRIP', payload: deleteData} );
+    }
+
     render() {
         return(
             <div>
                 <h2>This will display all of my trips!</h2>
 
                 {this.props.reduxState.userTrips.map( trip =>
-                    <Card>
-                        <h4>My first trip!</h4>
+                    <Card key={trip.id} className="trip-card" >
+                        <h4>{trip.name}</h4>
                         <p>{trip.group_size} people
                             <br/>{trip.number_days} days
                         </p>
+
+                        <Button value={trip.id}
+                            onClick={this.handleDelete} >Delete</Button>
                     </Card>
                 )}
             </div>

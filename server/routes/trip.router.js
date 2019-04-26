@@ -7,16 +7,17 @@ const router = express.Router();
 // GET route by ID for Save Trip Confirmation page
 router.post('/', rejectUnauthenticated, (req, res) => {
     let user_id = req.body.user_id;
+    let name = req.body.name;
     let number_days = req.body.number_days;
     let group_size = req.body.group_size;
     let difficulty = req.body.difficulty;
     let route_id = req.body.route_id;
     console.log( `in POST for save trip`, user_id );
     
-    let sqlText = `INSERT INTO "trip_plan" ("user_id", "number_days", "group_size", "difficulty", "route_id")
-            VALUES ($1, $2, $3, $4, $5);`;
+    let sqlText = `INSERT INTO "trip_plan" ("user_id", "name", "number_days", "group_size", "difficulty", "route_id")
+            VALUES ($1, $2, $3, $4, $5, $6);`;
 
-    pool.query( sqlText, [user_id, number_days, group_size, difficulty, route_id] )
+    pool.query( sqlText, [user_id, name, number_days, group_size, difficulty, route_id] )
         .then( (result) => {
             res.send( result.rows );
         })
@@ -41,6 +42,25 @@ router.get('/:user_id', rejectUnauthenticated, (req, res) => {
         })
         .catch( (error) => {
             console.log( `Couldn't get trip plans by user_id.`, error );
+            res.sendStatus(500);
+        })
+});
+
+// DELETE trip by trip id
+router.delete('/:trip_id', rejectUnauthenticated, (req, res) => {
+    const trip_id = req.params.trip_id;
+    console.log( `in GET trip by user_id...`, trip_id );
+    
+    let sqlText = `DELETE FROM "trip_plan" 
+                    WHERE "id" = $1;`;
+
+    pool.query( sqlText, [trip_id] )
+        .then( (result) => {
+            console.log( `Delete successful!` );
+            res.send( result.rows );
+        })
+        .catch( (error) => {
+            console.log( `Couldn't delete trip.`, error );
             res.sendStatus(500);
         })
 });

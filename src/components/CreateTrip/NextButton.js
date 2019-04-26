@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import './CreateTrip.css';
 
 // Material UI
 import Button from '@material-ui/core/Button';
@@ -28,14 +29,16 @@ class NextButton extends Component {
 
         return(
             <div> 
-                <Button variant="contained" color="primary" onClick={this.handleNext}>
-                    {activeStep === 4 ? 'Save' : 'Next'}
-                </Button>
-
-                <Button
+                <Button className="nav-button"
                     disabled={activeStep === 0}
                     onClick={this.handleBack} >
                         Back
+                </Button>
+
+                <Button className="nav-button"
+                    variant="contained" color="primary" 
+                    onClick={this.handleNext}>
+                        {activeStep === 4 ? 'Save' : 'Next'}
                 </Button>
             </div>
         );

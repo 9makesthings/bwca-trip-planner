@@ -1,6 +1,7 @@
 // test data, reset to null later
 const newTripData = {
     user_id: '',
+    name: '',
     trip_date: null,
     number_days: 2,
     group_size: 1,
@@ -16,6 +17,7 @@ const newTripReducer = (state = newTripData, action) => {
         return state = {
             ...state,
             user_id: payload.user_id,
+            name: payload.name,
             number_days: payload.number_days,
             group_size: payload.group_size,
             difficulty: payload.difficulty
