@@ -15,9 +15,6 @@ import SaveTrip from './SaveTrip/SaveTrip';
 class CreateTrip extends Component {
     
   
-    handleBack = () => {
-      this.props.dispatch( {type: 'BACK_ACTIVE_STEP'} );
-    };
 
     render() {
         const activeStep = this.props.reduxState.progress;
@@ -40,12 +37,6 @@ class CreateTrip extends Component {
 
                 {/* Step components go here */}
                 {stepPath}
-
-                <Button
-                    disabled={activeStep === 0}
-                    onClick={this.handleBack} >
-                        Back
-                </Button>
 
             </div>
         );

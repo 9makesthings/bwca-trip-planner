@@ -33,8 +33,9 @@ class StepTwo extends Component {
     addRoute = (event) => {
         this.setState({
             route_id: event.currentTarget.value,
+            route: event.currentTarget.name,
         });
-        console.log( `Chosen route id:`, event.currentTarget.value );
+        console.log( `Chosen route id:`, event.currentTarget.value, event.currentTarget.name );
         
     }
 
@@ -61,6 +62,7 @@ class StepTwo extends Component {
 
                             <CardActions>
                                 <Button variant="outlined" size="small"
+                                        name={route}
                                         value={route.id}
                                         onClick={this.addRoute} >Select route</Button>
                             </CardActions>

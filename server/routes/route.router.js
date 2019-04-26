@@ -30,6 +30,24 @@ router.get('/:difficulty/:days', rejectUnauthenticated, (req, res) => {
         })
 });
 
+// GET route by ID for Save Trip Confirmation page
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    const id = req.params.id;
+    console.log( `in GET route by id...`, id );
+    
+    let sqlText = `SELECT * FROM "route" 
+                    WHERE "id"=$1
+                    ORDER BY "id";`;
+
+    pool.query( sqlText, [id] )
+        .then( (result) => {
+            res.send( result.rows );
+        })
+        .catch( (error) => {
+            console.log( `Couldn't get trip routes.`, error );
+            res.sendStatus(500);
+        })
+});
 /**
  * POST route template
  */

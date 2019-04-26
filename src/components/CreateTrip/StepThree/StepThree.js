@@ -73,14 +73,14 @@ class StepThree extends Component {
 
                         {/* This will map and create a checkbox for each item */}
 
-                        {this.props.reduxState.equipment.map( item => 
+                        {/* {this.props.reduxState.equipment.map( item => 
                                 <FormControlLabel key={item.code}
                                     control={
                                         <Checkbox name={item.name} id={item.code} onChange={this.handlechange} />
                                     }
                                     label={item.name}
                                 />
-                            )}
+                            )} */}
 
                 </FormGroup>
 

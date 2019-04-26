@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 // Material UI
 import Button from '@material-ui/core/Button';
@@ -14,16 +15,29 @@ class NextButton extends Component {
             this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
         } else if( this.props.reduxState.progress === 4 ) {
             this.props.dispatch( {type: 'RESET_ACTIVE_STEP'} );
+            this.props.history.push('/my-trips');
         }
     };
+
+    handleBack = () => {
+        this.props.dispatch( {type: 'BACK_ACTIVE_STEP'} );
+      };
 
     render() {
         const activeStep = this.props.reduxState.progress;
 
         return(
-            <Button variant="contained" color="primary" onClick={this.handleNext}>
-                {activeStep === 4 ? 'Save' : 'Next'}
-            </Button>
+            <div> 
+                <Button variant="contained" color="primary" onClick={this.handleNext}>
+                    {activeStep === 4 ? 'Save' : 'Next'}
+                </Button>
+
+                <Button
+                    disabled={activeStep === 0}
+                    onClick={this.handleBack} >
+                        Back
+                </Button>
+            </div>
         );
     }
 }
@@ -32,4 +46,4 @@ const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
 
-export default connect( mapReduxStateToProps )(NextButton);
+export default connect( mapReduxStateToProps )(withRouter(NextButton));

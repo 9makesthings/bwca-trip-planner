@@ -1,18 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import NextButton from '../NextButton';
+import MealPlan from './MealPlan';
 
 // Material
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import FormControl from '@material-ui/core/FormControl';
 
 
 class StepFour extends Component {
@@ -29,20 +22,16 @@ class StepFour extends Component {
         this.setState({
             mealStatus: event.target.value,
         })
-
-        console.log( `in handleChange...`, this.state );
     }
 
     render() {
-        const stepAction = {type: 'SET_MEALPLAN', payload: this.state};
         let mealPlan;
         // OR should this be in a ternary and/or conditionally rendered components?
         if( this.state.mealStatus === 'Pack my own' ){
-            mealPlan = <p>This will be the meal-planning table!</p>;
+            mealPlan = <MealPlan />;
         } else if( this.state.mealStatus === 'Get outfitted' ){
             mealPlan = <p>Here are some outfitters you could connect with!</p>;
         }
-        // const breakfastList = this.props.reduxState.mealList;
 
         return(
             <div>
@@ -58,35 +47,8 @@ class StepFour extends Component {
                 
                 {mealPlan}
 
+                <MealPlan />
 
-                <Paper>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Day</TableCell>
-                                <TableCell>Breakfast</TableCell>
-                                <TableCell>Lunch</TableCell>
-                                <TableCell>Dinner</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell>1</TableCell>
-                                <TableCell>
-                                    <FormControl>
-                                        <Select onChange={this.handleChange}>
-                                            {this.props.reduxState.mealList.map( meal =>
-                                                <MenuItem key={meal.code} value={meal.name} >{meal.name}</MenuItem>
-                                                )}
-                                        </Select>
-                                    </FormControl>
-                                </TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </Paper>
-
-                <NextButton action={stepAction} />
             </div>
         );
     } 

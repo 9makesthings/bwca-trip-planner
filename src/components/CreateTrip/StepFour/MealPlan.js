@@ -17,8 +17,11 @@ import FormControl from '@material-ui/core/FormControl';
 class MealPlan extends Component {
 
     state = {
-        breakfast: '',
-        lunch: '',
+        dayOne: {
+            breakfast: '',
+            lunch: '',
+            dinner: ''
+        }
     }
 
     componentDidMount() {
@@ -27,7 +30,11 @@ class MealPlan extends Component {
 
     handleChange = (event) => {
         this.setState({
-            mealStatus: event.target.value,
+            ...this.state,
+            dayOne: {
+                ...this.state.dayOne,
+                [event.target.name]: event.target.value,
+            }
         })
 
         console.log( `in handleChange...`, this.state );
@@ -35,7 +42,6 @@ class MealPlan extends Component {
 
     render() {
         const stepAction = {type: 'SET_MEALPLAN', payload: this.state};
-        // const breakfastList = this.props.reduxState.mealList;
 
         return(
             <div>
@@ -50,18 +56,50 @@ class MealPlan extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
+
                             <TableRow>
                                 <TableCell>1</TableCell>
+
                                 <TableCell>
                                     <FormControl>
-                                        <Select onChange={this.handleChange}>
-                                            {this.props.reduxState.mealList.map( meal =>
-                                                <MenuItem key={meal.code} value={meal.name} >{meal.name}</MenuItem>
-                                                )}
+                                        <Select name="breakfast" value={this.state.dayOne.breakfast} 
+                                                onChange={this.handleChange}>
+                                            <MenuItem value="Instant Oatmeal" >Instant Oatmeal</MenuItem>
+                                            <MenuItem value="Pancake Mix" >Pancake Mix</MenuItem>
+                                            <MenuItem value="Breakfast Bars" >Breakfast Bars</MenuItem>
+                                            <MenuItem value="Granola" >Granola</MenuItem>
+                                            <MenuItem value="Breakfast Skillet" >Breakfast Skillet</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </TableCell>
+
+                                <TableCell>
+                                    <FormControl>
+                                        <Select name="lunch" value={this.state.dayOne.lunch} 
+                                                onChange={this.handleChange}>
+                                            <MenuItem value="Jerky & Cheese" >Jerky & Cheese</MenuItem>
+                                            <MenuItem value="Beef Sticks & Cheese" >Beef Sticks & Cheese</MenuItem>
+                                            <MenuItem value="Energy Bar" >Energy Bar</MenuItem>
+                                            <MenuItem value="Trail Mix" >Trail Mix</MenuItem>
+                                            <MenuItem value="Tortillas, PB & J" >Tortillas, PB & J</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </TableCell>
+
+                                <TableCell>
+                                    <FormControl>
+                                        <Select name="dinner" value={this.state.dayOne.dinner} 
+                                                onChange={this.handleChange}>
+                                            <MenuItem value="Chili Mac" >Chili Mac</MenuItem>
+                                            <MenuItem value="Pad Thai" >Pad Thai</MenuItem>
+                                            <MenuItem value="Beef Stroganoff" >Beef Stroganoff</MenuItem>
+                                            <MenuItem value="Chicken Fajita Bowl" >Chicken Fajita Bowl</MenuItem>
+                                            <MenuItem value="Lasagna" >Lasagna</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </TableCell>
                             </TableRow>
+
                         </TableBody>
                     </Table>
                 </Paper>

@@ -10,7 +10,8 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const tripRouteRouter = require('./routes/tripRoute.router');
+const tripRouter = require('./routes/trip.router');
+const routeRouter = require('./routes/route.router');
 const equipmentRouter = require('./routes/equipment.router');
 const mealRouter = require('./routes/meal.router');
 
@@ -27,7 +28,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/tripRoute', tripRouteRouter);
+app.use('/api/trip', tripRouter);
+app.use('/api/route', routeRouter);
 app.use('/api/equipment', equipmentRouter);
 app.use('/api/meal', mealRouter);
 

@@ -11,10 +11,16 @@ import Slider from '@material-ui/lab/Slider';
 class StepOne extends Component {
 
     state = {
+            user_id: this.props.reduxState.user.id,
             group_size: this.props.reduxState.newTrip.group_size,
             number_days: this.props.reduxState.newTrip.number_days,
             difficulty: this.props.reduxState.newTrip.difficulty
     };
+
+    componentDidMount(){
+        console.log( `user id:`, this.props.reduxState.user.id );
+        
+    }
 
     handleChange = (event) => {
         let property = event.target.name;
