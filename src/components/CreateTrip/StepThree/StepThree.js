@@ -7,8 +7,8 @@ import '../CreateTrip.css'
 // Material
 // import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 import Card from '@material-ui/core/Card';
 
 
@@ -76,14 +76,15 @@ class StepThree extends Component {
 
                         {/* This will map and create a checkbox for each item */}
 
-                        {this.props.reduxState.equipment.map( item => 
+                        <p>This will be a packing list.</p>
+                        {/* {this.props.reduxState.equipment.map( item => 
                                 <FormControlLabel key={item.code}
                                     control={
                                         <Checkbox name={item.name} id={item.code} onChange={this.handlechange} />
                                     }
                                     label={item.name}
                                 />
-                            )}
+                            )} */}
 
                     </FormGroup>
                 </Card>

@@ -27,7 +27,7 @@ const newTripReducer = (state = newTripData, action) => {
             ...state,
             route_id: payload.route_id,
         }
-    }
+    } 
 
     return state;
 }

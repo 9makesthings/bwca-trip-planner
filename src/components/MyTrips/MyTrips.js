@@ -15,6 +15,7 @@ class MyTrips extends Component {
 
     handleDelete = (event) => {
         console.log( event.currentTarget.value );
+        console.log( this.props.reduxState.newTrip.user_id );
         const deleteData = {
             trip_id: event.currentTarget.value,
             user_id: this.props.reduxState.newTrip.user_id
