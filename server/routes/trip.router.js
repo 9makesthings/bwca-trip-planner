@@ -28,11 +28,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 // GET all trips saved by the user
 router.get('/:user_id', rejectUnauthenticated, (req, res) => {
-    const user_id = req.params.userid;
+    const user_id = req.params.user_id;
     console.log( `in GET trip by user_id...`, user_id );
     
     let sqlText = `SELECT * FROM "trip_plan" 
-                    WHERE "user_id"=$1
+                    WHERE "user_id" = $1
                     ORDER BY "id";`;
 
     pool.query( sqlText, [user_id] )

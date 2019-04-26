@@ -8,6 +8,7 @@ import newTrip from './newTripReducer';
 import routeData from './routeReducer';
 import equipment from './equipmentReducer';
 import mealList from './mealReducer';
+import userTrips from './userTripsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   routeData, // holds route data for trip planner
   equipment, // holds data from equipment table
   mealList, // holds meal list data from meal table
+  userTrips, // holds all user's trip data
 });
 
 export default rootReducer;

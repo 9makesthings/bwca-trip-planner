@@ -12,12 +12,25 @@ function* saveNewTrip(action) {
     }
 }
 
+function* getUsersTrips(action) {
+    try{
+        console.log( `in getUsersTrips...` );
+        const response = yield axios.get( `/api/trip/${action.payload}`);
+        yield put( {type: 'SET_USER_TRIPS', payload: response.data} );
+    }
+    catch (error) {
+        console.log( `Couldn't get user's trips.`, error );
+        alert( `Couldn't get trip data. Try again later.` ); 
+    }
+}
+
 
 function* tripSaga() {
     yield takeLatest('SAVE_TRIP', saveNewTrip);
+    // GET all trips saved by current user
+    yield takeLatest('GET_USER_TRIPS', getUsersTrips);
     // UPDATE_TRIP
     // GET_TRIP_BY_ID
-    // GET_ALL_TRIPS
   }
 
 export default tripSaga;
