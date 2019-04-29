@@ -42,8 +42,12 @@ function* deleteTrip(action) {
 function* getTripDetails(action) {
     // put things here!
     try {
-        const response = yield axios.get( `api/trip/${action.payload}`);
-        yield put( {type: 'ADD_DETAILS', payload: response.data} );
+        const tripResponse = yield axios.get( `/api/trip/trip_details/${action.payload}`);
+        yield put( {type: 'SET_DETAILS', payload: tripResponse.data} );
+        const mealResponse = yield axios.get(`/api/meal/meal_details/${action.payload}`);
+        yield put( {type: 'SET_MEAL_DETAILS', payload: mealResponse.data});
+        const equipResponse = yield axios.get(`/api/equipment/packlist/${action.payload}`);
+        yield put( {type: 'SET_PACKLIST', payload: equipResponse.data});
     }
     catch (error) {
         console.log( `Couldn't get trip details.`, error );

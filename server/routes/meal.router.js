@@ -49,4 +49,23 @@ router.post( '/:id', rejectUnauthenticated, (req, res) => {
     }
 })
 
+// GET meals by tripID for ViewDetails page
+router.get('/meal_details/:id', rejectUnauthenticated, (req, res) => {
+    const id = req.params.id;
+    console.log( `in GET meals by id...`, id );
+    
+    let sqlText = `SELECT * FROM "meal_plan"
+                    WHERE "trip_plan_id"=$1
+                    ORDER BY "day";`;
+
+    pool.query( sqlText, [id] )
+        .then( (result) => {
+            res.send( result.rows );
+        })
+        .catch( (error) => {
+            console.log( `Couldn't get meal plan by id.`, error );
+            res.sendStatus(500);
+        })
+});
+
 module.exports = router;

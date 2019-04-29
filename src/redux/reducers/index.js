@@ -10,6 +10,7 @@ import equipment from './equipmentReducer';
 import mealPlan from './mealReducer';
 import userTrips from './userTripsReducer';
 import tripId from './tripIdReducer';
+import viewDetails from './viewDetailsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   mealPlan, // holds meal list data from meal table
   userTrips, // holds all user's trip data
   tripId, // holds most recently saved trip ID
+  viewDetails, // holds trip details for view-details page
 });
 
 export default rootReducer;

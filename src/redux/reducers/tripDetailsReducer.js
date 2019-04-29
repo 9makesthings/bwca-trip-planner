@@ -31,6 +31,7 @@ const tripDetailsReducer = (state = tripDetails, action) => {
         return tripDetails;
     } 
 
+
     return state;
 }
 

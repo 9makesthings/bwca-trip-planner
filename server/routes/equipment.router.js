@@ -48,4 +48,24 @@ router.post( '/:id', rejectUnauthenticated, (req, res) => {
 })
 
 
+// GET packlist by tripID for ViewDetails page
+router.get('/packlist/:id', rejectUnauthenticated, (req, res) => {
+    const id = req.params.id;
+    console.log( `in GET packlist by id...`, id );
+    
+    let sqlText = `SELECT * FROM "packlist"
+                    WHERE "trip_plan_id"=$1
+                    ORDER BY "id";`;
+
+    pool.query( sqlText, [id] )
+        .then( (result) => {
+            res.send( result.rows );
+        })
+        .catch( (error) => {
+            console.log( `Couldn't get packlist by id.`, error );
+            res.sendStatus(500);
+        })
+});
+
+
 module.exports = router;
