@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Home from '../Home/Home';
 import CreateTrip from '../CreateTrip/CreateTrip';
 import MyTrips from '../MyTrips/MyTrips';
+import ViewTripDetails from '../ViewTripDetails/ViewTripDetails';
 
 import './App.css';
 
@@ -54,6 +55,10 @@ class App extends Component {
               exact
               path="/my-trips"
               component={MyTrips}
+            />
+            <ProtectedRoute
+              path="/view-details"
+              component={ViewTripDetails}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

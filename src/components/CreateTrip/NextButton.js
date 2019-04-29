@@ -18,7 +18,7 @@ class NextButton extends Component {
         } else if( this.props.reduxState.progress === 4 ) {
             // Reset active step after saving a trip
             this.props.dispatch( {type: 'RESET_ACTIVE_STEP'} );
-            // Clear trip input reducer
+            // Clear trip input reducers : newTrip, mealPlan, and equipment
             this.props.dispatch( {type: 'RESET_TRIP_DATA'} );
             // Route to My Trips after save
             this.props.history.push('/my-trips');

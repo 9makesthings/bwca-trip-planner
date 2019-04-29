@@ -7,7 +7,7 @@ function* saveNewTrip(action) {
         const response = yield axios.post( '/api/trip', action.payload.tripData );
         console.log( `Trip Id response?:`, response.data[0].id );
         yield axios.post( `/api/meal/${response.data[0].id}`, action.payload.mealPlan );
-        // yield axios.post for packlist!
+        yield axios.post(`/api/equipment/${response.data[0].id}`, action.payload.equipment);
     }
     catch (error) {
         console.log( `Couldn't save new trip.`, error );

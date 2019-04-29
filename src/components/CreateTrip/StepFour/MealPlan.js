@@ -18,7 +18,7 @@ class MealPlan extends Component {
 
     state = {
         user_id: this.props.reduxState.newTrip.user_id,
-        mealPlan: []
+        mealPlan: this.props.reduxState.mealPlan.mealPlan || []
     }
 
     componentDidMount() {
@@ -28,21 +28,27 @@ class MealPlan extends Component {
 
     createMealPlan = () => {
         const days = this.props.reduxState.newTrip.number_days;
-        let mealPlanArray = [];
-        for( let i=0; i<days; i++ ){
-            let mealDay = {
-                day: (i+1),
-                breakfast: '',
-                lunch: '',
-                dinner: ''
-            }
-            mealPlanArray.push(mealDay);
-        }
+        const currentPlan = this.props.reduxState.mealPlan.mealPlan;
+        console.log( `currentPlan:`, currentPlan );
 
-        this.setState({
-            ...this.state,
-            mealPlan: mealPlanArray,
-        })
+        if( currentPlan === undefined ){
+            let mealPlanArray = [];
+            for( let i=0; i<days; i++ ){
+                
+                let mealDay = {
+                    day: (i+1),
+                    breakfast: '',
+                    lunch: '',
+                    dinner: ''
+                }
+                mealPlanArray.push(mealDay);
+            }
+    
+            this.setState({
+                ...this.state,
+                mealPlan: mealPlanArray,
+            })
+        }
     }
 
     handleChange = (i, name) => (event) => {

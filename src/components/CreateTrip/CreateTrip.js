@@ -10,8 +10,6 @@ import SaveTrip from './SaveTrip/SaveTrip';
 
 
 class CreateTrip extends Component {
-    
-  
 
     render() {
         const activeStep = this.props.reduxState.progress;

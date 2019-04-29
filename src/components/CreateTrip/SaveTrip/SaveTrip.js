@@ -19,8 +19,9 @@ class SaveTrip extends Component {
     render() {
         const tripData = this.props.reduxState.newTrip;
         const mealPlan = this.props.reduxState.mealPlan;
+        const equipment = this.props.reduxState.equipment;
         const route = this.props.reduxState.routeData[0];
-        const stepAction = {type: 'SAVE_TRIP', payload: {tripData, mealPlan} };
+        const stepAction = {type: 'SAVE_TRIP', payload: {tripData, mealPlan, equipment} };
 
         return(
             <div>

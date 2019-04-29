@@ -5,10 +5,10 @@ import '../CreateTrip.css'
 import NextButton from '../NextButton';
 
 // Material
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Card from '@material-ui/core/Card';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import Select from '@material-ui/core/Select';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import Card from '@material-ui/core/Card';
 
 
 class StepFour extends Component {
@@ -41,7 +41,7 @@ class StepFour extends Component {
 
         return(
             <div>
-                <Card className="step-card" >
+                {/* <Card className="step-card" >
                         <InputLabel>
                             Would you like to pack your own meals or find an outfitter to pack them?
                         </InputLabel>
@@ -53,7 +53,9 @@ class StepFour extends Component {
                         </Select>
                 </Card>
                 
-                {mealPlan}
+                {mealPlan} */}
+
+                <MealPlan />
 
             </div>
         );

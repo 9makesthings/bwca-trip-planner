@@ -23,5 +23,29 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
+// POST packlist
+router.post( '/:id', rejectUnauthenticated, (req, res) => {
+    let trip_id = req.params.id;
+    
+    let equipment = req.body.equipment;
+
+    for( let i=0; i < equipment.length; i++ ){
+        
+        let name = equipment[i].name;
+        let status = equipment[i].status;
+        
+        let sqlText = `INSERT INTO "packlist" ("equipment_name", "status", "trip_plan_id")
+                    VALUES ( $1, $2, $3);`;
+        pool.query( sqlText, [ name, status, trip_id ] )
+            .then( (response) => {
+                res.sendStatus(201);
+            })
+            .catch( (error) => {
+                console.log( `Couldn't save meal plan.`, error );
+                res.sendStatus(500);
+            })
+    }
+})
+
 
 module.exports = router;

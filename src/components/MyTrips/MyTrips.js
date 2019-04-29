@@ -24,18 +24,26 @@ class MyTrips extends Component {
         this.props.dispatch( {type: 'DELETE_TRIP', payload: deleteData} );
     }
 
+    viewDetails = (id, name) => (event) => {
+        this.props.history.push(`/view-details?${name}`);
+        this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id })
+    }
+
     render() {
         return(
             <div>
                 <h2>This will display all of my trips!</h2>
 
                 {this.props.reduxState.userTrips.map( trip =>
-                    <Card key={trip.id} className="trip-card" >
+                    <Card key={trip.id} className="trip-card"
+                            onClick={this.viewDetails(trip.id, trip.name)} >
                         <h4>{trip.name}</h4>
                         <p>{trip.group_size} people
                             <br/>{trip.number_days} days
                         </p>
 
+                        {/* <Button value={trip.id} name={trip.name}
+                            onClick={this.viewDetails} >Details</Button> */}
                         <Button value={trip.id}
                             onClick={this.handleDelete} >Delete</Button>
                     </Card>
