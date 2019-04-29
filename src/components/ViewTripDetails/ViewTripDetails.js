@@ -6,10 +6,9 @@ class ViewDetails extends Component {
 
     componentDidMount(){
         // this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id} );
-        // this will hold a big get to dispatch!
-        // GET trip_plan by id
-        // JOIN route by id
-        // JOIN meal_plan, packlist
+        // getting all data on click of trip card in MyTrips,
+        // EXCEPT for route info. 
+        // TODO! Get route info as well.
     }
 
     render() {
