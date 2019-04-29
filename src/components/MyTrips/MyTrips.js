@@ -26,7 +26,7 @@ class MyTrips extends Component {
 
     viewDetails = (id, name) => (event) => {
         this.props.history.push(`/view-details?${name}`);
-        this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id })
+        this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id} );
     }
 
     render() {

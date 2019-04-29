@@ -1,5 +1,5 @@
 // test data, reset to null later
-const newTripData = {
+const tripDetails = {
     user_id: '',
     name: '',
     trip_date: null,
@@ -9,7 +9,7 @@ const newTripData = {
     route_id: null
 }
 
-const newTripReducer = (state = newTripData, action) => {
+const tripDetailsReducer = (state = tripDetails, action) => {
 
     let payload = action.payload;
 
@@ -28,10 +28,10 @@ const newTripReducer = (state = newTripData, action) => {
             route_id: payload.route_id,
         }
     } else if( action.type === 'RESET_TRIP_DATA'){
-        return newTripData;
+        return tripDetails;
     } 
 
     return state;
 }
 
-export default newTripReducer;
+export default tripDetailsReducer;

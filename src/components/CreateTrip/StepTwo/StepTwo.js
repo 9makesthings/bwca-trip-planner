@@ -21,11 +21,8 @@ class StepTwo extends Component {
     componentDidMount() {
         // get trip details, difficulty and number_days, 
         // and send as payload
-        const difficultyLevel = this.props.reduxState.newTrip.difficulty;
-        const number_days = this.props.reduxState.newTrip.number_days;
-        // console.log( `newTripData...`, newTripData );
-        
-        // const number_days = this.props.reduxState.newTrip.number_days;
+        const difficultyLevel = this.props.reduxState.tripDetails.difficulty;
+        const number_days = this.props.reduxState.tripDetails.number_days;
 
         this.props.dispatch( {type: 'GET_ROUTE_DATA', 
                     payload: {difficulty: difficultyLevel, days: number_days} } );
@@ -38,7 +35,7 @@ class StepTwo extends Component {
         });
         console.log( `Chosen route id:`, event.currentTarget.value, event.currentTarget.name );
         
-    }
+    } 
 
     render() {
         const stepAction = {type: 'ADD_ROUTE_ID', payload: this.state};

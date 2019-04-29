@@ -4,7 +4,7 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 // Plan a trip reducers
 import progress from './progressReducer';
-import newTrip from './newTripReducer';
+import tripDetails from './tripDetailsReducer';
 import routeData from './routeReducer';
 import equipment from './equipmentReducer';
 import mealPlan from './mealReducer';
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
   progress, // holds the active step in creating a trip plan
-  newTrip, // holds newTrip details as user creates a trip plan
+  tripDetails, // holds newTrip details as user creates a trip plan
   routeData, // holds route data for trip planner
   equipment, // holds data from equipment table
   mealPlan, // holds meal list data from meal table

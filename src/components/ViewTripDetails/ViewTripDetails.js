@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class ViewDetails extends Component {
 
     componentDidMount(){
+        // this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id} );
         // this will hold a big get to dispatch!
         // GET trip_plan by id
         // JOIN route by id

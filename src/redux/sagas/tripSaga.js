@@ -39,8 +39,20 @@ function* deleteTrip(action) {
     }
 }
 
+function* getTripDetails(action) {
+    // put things here!
+    try {
+        const response = yield axios.get( `api/trip/${action.payload}`);
+        yield put( {type: 'ADD_DETAILS', payload: response.data} );
+    }
+    catch (error) {
+        console.log( `Couldn't get trip details.`, error );
+        alert( `Couldn't get trip details. Try again later.` );
+    }
+}
 
 function* tripSaga() {
+    // POST all trip data, 
     yield takeLatest('SAVE_TRIP', saveNewTrip);
     // GET all trips saved by current user
     yield takeEvery('GET_USER_TRIPS', getUsersTrips);
@@ -48,6 +60,7 @@ function* tripSaga() {
     yield takeLatest('DELETE_TRIP', deleteTrip);
     // UPDATE_TRIP
     // GET_TRIP_BY_ID
+    yield takeLatest('GET_TRIP_DETAILS', getTripDetails);
   }
 
 export default tripSaga;
