@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-// GET route by ID for Save Trip Confirmation page
+// POST for "save" of new trip information
 router.post('/', rejectUnauthenticated, (req, res) => {
     let user_id = req.body.user_id;
     let name = req.body.name;
@@ -15,14 +15,16 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     console.log( `in POST for save trip`, user_id );
     
     let sqlText = `INSERT INTO "trip_plan" ("user_id", "name", "number_days", "group_size", "difficulty", "route_id")
-            VALUES ($1, $2, $3, $4, $5, $6);`;
+            VALUES ($1, $2, $3, $4, $5, $6)
+            RETURNING "id";`;
 
     pool.query( sqlText, [user_id, name, number_days, group_size, difficulty, route_id] )
         .then( (result) => {
             res.send( result.rows );
+            pool.query
         })
         .catch( (error) => {
-            console.log( `Couldn't get trip routes.`, error );
+            console.log( `Couldn't save trip.`, error );
             res.sendStatus(500);
         })
 });
@@ -49,7 +51,7 @@ router.get('/:user_id', rejectUnauthenticated, (req, res) => {
 // DELETE trip by trip id
 router.delete('/:trip_id', rejectUnauthenticated, (req, res) => {
     const trip_id = req.params.trip_id;
-    console.log( `in GET trip by user_id...`, trip_id );
+    console.log( `in DELETE trip by trip_id...`, trip_id );
     
     let sqlText = `DELETE FROM "trip_plan" 
                     WHERE "id" = $1;`;

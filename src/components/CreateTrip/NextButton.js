@@ -14,8 +14,13 @@ class NextButton extends Component {
 
         if( this.props.reduxState.progress < 4 ){
             this.props.dispatch( {type: 'NEXT_ACTIVE_STEP'} );
+
         } else if( this.props.reduxState.progress === 4 ) {
+            // Reset active step after saving a trip
             this.props.dispatch( {type: 'RESET_ACTIVE_STEP'} );
+            // Clear trip input reducer
+            this.props.dispatch( {type: 'RESET_TRIP_DATA'} );
+            // Route to My Trips after save
             this.props.history.push('/my-trips');
         }
     };

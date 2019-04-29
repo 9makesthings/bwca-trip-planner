@@ -27,6 +27,8 @@ const newTripReducer = (state = newTripData, action) => {
             ...state,
             route_id: payload.route_id,
         }
+    } else if( action.type === 'RESET_TRIP_DATA'){
+        return newTripData;
     } 
 
     return state;

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import NextButton from '../NextButton';
-// import MealRow from './MealRow'
 
 // Material
 import Select from '@material-ui/core/Select';
@@ -23,7 +22,7 @@ class MealPlan extends Component {
     }
 
     componentDidMount() {
-        console.log( `componentDidMount in MealPlan!` );
+        // console.log( `componentDidMount in MealPlan!` );
         this.createMealPlan();
     }
 
@@ -47,23 +46,16 @@ class MealPlan extends Component {
     }
 
     handleChange = (i, name) => (event) => {
-        // let i = event.currentTarget.getAttribute('id') ;
         let newMealPlan = [...this.state.mealPlan];
-        console.log( `newMealPlan:`, newMealPlan, i );
-        console.log( `name:`, name );
-        console.log( `value:`, event.target.value );
-
-        // let name = event.currentTarget.getAttribute(name);
+        // console.log( `newMealPlan:`, newMealPlan, i );
+        // console.log( `name:`, name );
         let value = event.target.value;
-        
         newMealPlan[i][name]= value;
 
         this.setState({
             ...this.state,
             mealPlan: newMealPlan
         })
-
-        console.log( `in handleChange...`, this.state );
     }
 
     render() {
@@ -89,7 +81,6 @@ class MealPlan extends Component {
                                     <TableCell>
                                         <FormControl>
                                             <Select name="breakfast" value={day.breakfast}
-                                                    // id={i} 
                                                     onChange={this.handleChange(i, 'breakfast')}>
                                                 <MenuItem value="Instant Oatmeal" >Instant Oatmeal</MenuItem>
                                                 <MenuItem value="Pancake Mix" >Pancake Mix</MenuItem>

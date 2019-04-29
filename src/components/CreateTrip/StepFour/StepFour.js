@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import MealPlan from './MealPlan';
 import '../CreateTrip.css'
+import NextButton from '../NextButton';
 
 // Material
 import InputLabel from '@material-ui/core/InputLabel';
@@ -32,7 +33,10 @@ class StepFour extends Component {
         if( this.state.mealStatus === 'Pack my own' ){
             mealPlan = <MealPlan />;
         } else if( this.state.mealStatus === 'Get outfitted' ){
-            mealPlan = <p>Here are some outfitters you could connect with!</p>;
+            mealPlan = <div>
+                    <p>Here are some outfitters you could connect with!</p>
+                    <NextButton />
+                </div>;
         }
 
         return(

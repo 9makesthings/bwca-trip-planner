@@ -4,7 +4,10 @@ import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 function* saveNewTrip(action) {
     try {
         console.log( `in saveNewTrip...` );
-        yield axios.post( '/api/trip', action.payload );
+        const response = yield axios.post( '/api/trip', action.payload.tripData );
+        console.log( `Trip Id response?:`, response.data[0].id );
+        yield axios.post( `/api/meal/${response.data[0].id}`, action.payload.mealPlan );
+        // yield axios.post for packlist!
     }
     catch (error) {
         console.log( `Couldn't save new trip.`, error );
@@ -14,7 +17,7 @@ function* saveNewTrip(action) {
 
 function* getUsersTrips(action) {
     try{
-        console.log( `in getUsersTrips...` );
+        // console.log( `in getUsersTrips...` );
         const response = yield axios.get( `/api/trip/${action.payload}`);
         yield put( {type: 'SET_USER_TRIPS', payload: response.data} );
     }
@@ -41,6 +44,7 @@ function* tripSaga() {
     yield takeLatest('SAVE_TRIP', saveNewTrip);
     // GET all trips saved by current user
     yield takeEvery('GET_USER_TRIPS', getUsersTrips);
+    // DELETE trip from My Trips
     yield takeLatest('DELETE_TRIP', deleteTrip);
     // UPDATE_TRIP
     // GET_TRIP_BY_ID
