@@ -35,10 +35,13 @@ class ProgressBar extends Component {
 
         return(
             <div>
-                <h2>{getStepContent(activeStep)}</h2>
+                <h1 className="step-header" >{getStepContent(activeStep)}</h1>
 
                 {/* progress bar goes here */}
-                <Stepper activeStep={activeStep} alternativeLabel>
+                <Stepper activeStep={activeStep}
+                    style={{ backgroundColor: "transparent" }} 
+                    className="stepper"
+                    alternativeLabel>
                 {steps.map(label => (
                     <Step key={label}>
                         <StepLabel></StepLabel>

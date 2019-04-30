@@ -5,6 +5,17 @@ import './CreateTrip.css';
 
 // Material UI
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+  });
 
 class NextButton extends Component {
 
@@ -31,17 +42,20 @@ class NextButton extends Component {
 
     render() {
         const activeStep = this.props.reduxState.progress;
+        const {classes} = this.props;
 
         return(
-            <div> 
-                <Button className="nav-button"
+            <div className="nav-buttons" > 
+                <Button 
                     disabled={activeStep === 0}
+                    className={classes.button}
                     onClick={this.handleBack} >
                         Back
                 </Button>
 
-                <Button className="nav-button"
-                    variant="contained" color="primary" 
+                <Button 
+                    variant="contained" color="primary"
+                    className={classes.button} 
                     onClick={this.handleNext}>
                         {activeStep === 4 ? 'Save' : 'Next'}
                 </Button>
@@ -54,4 +68,4 @@ const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
 
-export default connect( mapReduxStateToProps )(withRouter(NextButton));
+export default connect( mapReduxStateToProps )(withRouter(withStyles(styles)(NextButton)));

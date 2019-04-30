@@ -7,8 +7,6 @@ import '../CreateTrip.css';
 // Material
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 
 
 
@@ -45,26 +43,25 @@ class StepTwo extends Component {
                 {this.props.reduxState.routeData.map( route => 
                         // <RouteCard key={route.id} route={route} />
                         <Card key={route.id} className="route-card" >
-                            <CardContent>
-                                <div>
+                            <div className="route-card-div" >
+                                <div className="route-img" >
                                     <img src={route.image_url} alt={route.name} />
                                 </div>
 
-                                <div>
+                                <div className="route-info" >
                                     <h4>{route.name}</h4>
 
                                     <p>{route.distance} miles, {route.min_days} to {route.max_days} days</p>
                                     <p>{route.description}</p>
                                 </div>
-                            </CardContent>
-
-                            <CardActions>
-                                <Button variant="outlined" size="small"
+                                <div className="select-button">
+                                    <Button variant="outlined" size="small"
                                         name={route}
                                         value={route.id}
+                                        disabled={this.state.route_id === route.id}
                                         onClick={this.addRoute} >Select route</Button>
-                            </CardActions>
-
+                                </div>
+                            </div>
                         </Card>
                     )}
 

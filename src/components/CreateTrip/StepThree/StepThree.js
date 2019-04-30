@@ -78,7 +78,8 @@ class StepThree extends Component {
                         {this.state.equipment.map( (item, i) => 
                                 <FormControlLabel key={i}
                                     control={
-                                        <Checkbox name={item.name} 
+                                        <Checkbox name={item.name}
+                                            color="primary"
                                             value={item.status} 
                                             onChange={this.handlechange(i)} />
                                     }

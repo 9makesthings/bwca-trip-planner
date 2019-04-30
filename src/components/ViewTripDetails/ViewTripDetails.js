@@ -25,7 +25,7 @@ class ViewDetails extends Component {
     render() {
         const trip = this.props.reduxState.tripDetails.tripDetails;
         // const mealPlan = this.props.reduxState.tripDetails.mealPlan;
-        const packlist = this.props.reduxState.tripDetails.packlist;
+        // const packlist = this.props.reduxState.tripDetails.packlist;
         console.log( `tripDetails:`, trip );
         console.log( `trip name:`, trip.name );
         
