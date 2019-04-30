@@ -17,7 +17,7 @@ import FormControl from '@material-ui/core/FormControl';
 class MealPlan extends Component {
 
     state = {
-        user_id: this.props.reduxState.newTrip.user_id,
+        user_id: this.props.reduxState.tripInputs.user_id,
         mealPlan: this.props.reduxState.mealPlan.mealPlan || []
     }
 
@@ -27,7 +27,7 @@ class MealPlan extends Component {
     }
 
     createMealPlan = () => {
-        const days = this.props.reduxState.newTrip.number_days;
+        const days = this.props.reduxState.tripInputs.number_days;
         const currentPlan = this.props.reduxState.mealPlan.mealPlan;
         console.log( `currentPlan:`, currentPlan );
 

@@ -1,36 +1,37 @@
-// test data, reset to null later
-const tripDetails = {
-    user_id: '',
-    name: '',
-    trip_date: null,
-    number_days: 2,
-    group_size: 1,
-    difficulty: 3,
-    route_id: null
+const trip = {
+    tripDetails: {
+        completed: null,
+        description: '',
+        difficulty: 0,
+        distance: 0,
+        group_size: 0,
+        image_url: '',
+        name: '',
+        number_days: 0,
+        route_name: '',
+        trip_date: null
+    }
 }
 
-const tripDetailsReducer = (state = tripDetails, action) => {
+const tripDetailsReducer = (state = trip, action) => {
 
-    let payload = action.payload;
-
-    if( action.type === 'ADD_FIRST_DETAILS' ){
+    if( action.type === 'SET_DETAILS' ){
+        return state = {
+            tripDetails: action.payload[0],
+        }
+    }
+    if( action.type === 'SET_MEAL_DETAILS') {
         return state = {
             ...state,
-            user_id: payload.user_id,
-            name: payload.name,
-            number_days: payload.number_days,
-            group_size: payload.group_size,
-            difficulty: payload.difficulty
+            mealPlan: action.payload,
         }
-    } else if( action.type === 'ADD_ROUTE_ID' ){
+    }
+    if( action.type === 'SET_PACKLIST') {
         return state = {
             ...state,
-            route_id: payload.route_id,
+            packlist: action.payload,
         }
-    } else if( action.type === 'RESET_TRIP_DATA'){
-        return tripDetails;
-    } 
-
+    }
 
     return state;
 }

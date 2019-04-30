@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import MealPlan from './MealPlan';
 import '../CreateTrip.css'
-import NextButton from '../NextButton';
+// import NextButton from '../NextButton';
 
 // Material
 // import InputLabel from '@material-ui/core/InputLabel';
@@ -28,16 +28,16 @@ class StepFour extends Component {
     }
 
     render() {
-        let mealPlan;
-        // OR should this be in a ternary and/or conditionally rendered components?
-        if( this.state.mealStatus === 'Pack my own' ){
-            mealPlan = <MealPlan />;
-        } else if( this.state.mealStatus === 'Get outfitted' ){
-            mealPlan = <div>
-                    <p>Here are some outfitters you could connect with!</p>
-                    <NextButton />
-                </div>;
-        }
+        // let mealPlan;
+        // // OR should this be in a ternary and/or conditionally rendered components?
+        // if( this.state.mealStatus === 'Pack my own' ){
+        //     mealPlan = <MealPlan />;
+        // } else if( this.state.mealStatus === 'Get outfitted' ){
+        //     mealPlan = <div>
+        //             <p>Here are some outfitters you could connect with!</p>
+        //             <NextButton />
+        //         </div>;
+        // }
 
         return(
             <div>

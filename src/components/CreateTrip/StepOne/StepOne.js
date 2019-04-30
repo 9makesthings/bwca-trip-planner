@@ -13,10 +13,10 @@ class StepOne extends Component {
 
     state = {
             user_id: this.props.reduxState.user.id,
-            name: this.props.reduxState.tripDetails.name,
-            group_size: this.props.reduxState.tripDetails.group_size,
-            number_days: this.props.reduxState.tripDetails.number_days,
-            difficulty: this.props.reduxState.tripDetails.difficulty
+            name: this.props.reduxState.tripInputs.name,
+            group_size: this.props.reduxState.tripInputs.group_size,
+            number_days: this.props.reduxState.tripInputs.number_days,
+            difficulty: this.props.reduxState.tripInputs.difficulty
     };
 
     componentDidMount(){

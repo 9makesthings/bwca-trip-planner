@@ -21,8 +21,8 @@ class StepTwo extends Component {
     componentDidMount() {
         // get trip details, difficulty and number_days, 
         // and send as payload
-        const difficultyLevel = this.props.reduxState.tripDetails.difficulty;
-        const number_days = this.props.reduxState.tripDetails.number_days;
+        const difficultyLevel = this.props.reduxState.tripInputs.difficulty;
+        const number_days = this.props.reduxState.tripInputs.number_days;
 
         this.props.dispatch( {type: 'GET_ROUTE_DATA', 
                     payload: {difficulty: difficultyLevel, days: number_days} } );

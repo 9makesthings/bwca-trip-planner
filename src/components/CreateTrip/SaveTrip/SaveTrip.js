@@ -13,11 +13,11 @@ class SaveTrip extends Component {
     componentDidMount(){
 
         this.props.dispatch( {type: 'GET_ROUTE_BY_ID', 
-                    payload: {route_id: this.props.reduxState.newTrip.route_id} } );
+                    payload: {route_id: this.props.reduxState.tripInputs.route_id} } );
     }
 
     render() {
-        const tripData = this.props.reduxState.newTrip;
+        const tripData = this.props.reduxState.tripInputs;
         const mealPlan = this.props.reduxState.mealPlan;
         const equipment = this.props.reduxState.equipment;
         const route = this.props.reduxState.routeData[0];
