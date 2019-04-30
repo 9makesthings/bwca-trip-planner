@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 // Material
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+// import FormGroup from '@material-ui/core/FormGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 
 class ViewDetails extends Component {
+
+    state = {
+        packlist: this.props.reduxState.tripDetails.packlist || [],
+    }
 
     componentDidMount(){
         // console.log( `History props:`, this.props.location.search );
@@ -56,6 +63,12 @@ class ViewDetails extends Component {
 
                     <div>
                         <h4>Pack List</h4>
+                        <ul>
+                            {this.state.packlist.map( (item, i) => 
+                                    <li key={i}>{item.name}</li>
+                                )}
+
+                        </ul>
                     </div>
 
                     <div>
