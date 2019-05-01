@@ -9,17 +9,38 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { Card } from '@material-ui/core';
 
 class MealPlanDetails extends Component {
 
-    state = {
-        mealPlan = this.props.reduxState.tripDetails.mealPlan,
-    }
 
     render(){
+        let mealplan;
+        if(this.props.reduxState.tripDetails.mealPlan){
+            mealplan = 
+                this.props.reduxState.tripDetails.mealPlan.map( (day, i) => 
+                    <TableRow key={i} >
+                        <TableCell>{day.day}</TableCell>
+        
+                        <TableCell>
+                            {day.breakfast}
+                        </TableCell>
+        
+                        <TableCell>
+                            {day.lunch}
+                        </TableCell>
+        
+                        <TableCell>
+                            {day.dinner}
+                        </TableCell>
+                    </TableRow>
+                )
+        } else {
+            mealplan = null;
+        }
         return(
-            <div>
-                <p>This will be a table</p>
+            <div className="mealplan-card">
+                <h4>Meal Plan</h4>
 
                 <Table>
                     <TableHead>
@@ -31,24 +52,7 @@ class MealPlanDetails extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.state.mealPlan.map( (day, i) => 
-                            <TableRow key={i} >
-                                <TableCell>{day.day}</TableCell>
-                
-                                <TableCell>
-                                    {day.breakfast}
-                                </TableCell>
-                
-                                <TableCell>
-                                    {day.lunch}
-                                </TableCell>
-                
-                                <TableCell>
-                                    {day.dinner}
-                                </TableCell>
-                            </TableRow>
-                        )}
-
+                        {mealplan}
                     </TableBody>
                 </Table>
 

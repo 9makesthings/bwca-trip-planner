@@ -10,7 +10,8 @@ const trip = {
         number_days: 0,
         route_name: '',
         trip_date: null
-    }
+    },
+    packlist: [],
 }
 
 const tripDetailsReducer = (state = trip, action) => {

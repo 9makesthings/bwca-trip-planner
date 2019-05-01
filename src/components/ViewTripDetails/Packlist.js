@@ -1,39 +1,43 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+// Material
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import { FormGroup, Card } from '@material-ui/core';
+
 
 class Packlist extends Component {
 
     state = {
-        packlist: []
+        packlist: this.props.reduxState.tripDetails.packlist 
     }
 
-    componentDidUpdate(prevProps){
-        if( this.props.reduxState.tripDetails.packlist !== prevProps.tripDetails.packlist ){
-
-            let packlist = this.props.reduxState.tripDetails.packlist;
-            for( let i=0; i<packlist.length; i++ ){
-                if( packlist[i].status === 'need' ){
-                    this.state.packlist.push( packlist[i] );
-                }
-            }
-            console.log( `Packlist current state...`, this.state );
-
-        }
-        
-    }
 
     render(){
-        console.log( `Please map this...`, this.props.reduxState.tripDetails.packlist );
-        
+        // console.log( `Please map this...`, this.props.reduxState.tripDetails.packlist );
+        let packlist;
+        if(this.props.reduxState.tripDetails.packlist){
+            packlist =
+                this.props.reduxState.tripDetails.packlist.map((item, i) => {
+                    if( item.status === 'need'){
+                    return <FormControlLabel key={i}
+                        control={<Checkbox disabled />}
+                        label={item.equipment_name}
+                        />
+                    }
+                });
+        } else {
+            packlist = null;
+        }
         return(
-
-            <ul>
-                {this.state.packlist.map( (item, i) => 
-                        <li key={i}>{item.name}</li>
-                    )}
-            </ul>
-
+            <div className="packlist-card">
+                <FormGroup>
+                    <h4>Pack List</h4>
+                    <p>Items needed:</p>
+                    {packlist}
+                </FormGroup>
+            </div>
         );
     }
 }

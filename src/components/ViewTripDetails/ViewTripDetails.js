@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-// import Packlist from './Packlist';
-// import MealPlanDetails from './MealPlanDetails';
+import Packlist from './Packlist';
+import MealPlanDetails from './MealPlanDetails';
+import './ViewTripDetails.css';
 
 // Material
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-// import FormGroup from '@material-ui/core/FormGroup';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
 
 class ViewDetails extends Component {
 
@@ -33,45 +30,34 @@ class ViewDetails extends Component {
         
 
         return(
-            <div>
-                <h2>Trip Details</h2>
-
-                <div>
-                    <div>
-                        <h3>{trip.name}</h3>
-                        <p>{trip.group_size} people
-                        <br/> {trip.number_days} days
-                        </p>
-                    </div>
+            <div className="view-details">
+                <div className="header">
+                    <h1>Trip Details</h1>
+                    <hr/>
                 </div>
 
-                <div>
-                    <div>
-                        <Card className="route-card" >
-                            <CardContent>
-                                <div>
-                                    <img src={trip.image_url} alt={trip.route_name} />
-                                </div>
+                <div className="right-div">
+                    <h3>Trip: {trip.name}</h3>
+                    <p>{trip.group_size} people
+                    <br/> {trip.number_days} days
+                    </p>
 
-                                <div>
-                                    <h4>{trip.route_name}</h4>
+                    <div className="route" >
+                        <div className="route-img" >
+                            <img src={trip.image_url} alt={trip.route_name} />
+                        </div>
 
-                                    <p>{trip.distance} miles</p>
-                                    <p>{trip.description}</p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                        <div className="route-info" >
+                            <h4>{trip.route_name}</h4>
+
+                            <p>{trip.distance} miles</p>
+                            <p>{trip.description}</p>
+                        </div>
                     </div>
 
-                    <div>
-                        <h4>Pack List</h4>
-                        {/* <Packlist/> */}
-                    </div>
+                    <Packlist/>
 
-                    <div>
-                        <h4>Meal Plan</h4>
-                        {/* <MealPlanDetails /> */}
-                    </div>
+                    <MealPlanDetails />
 
                     <div>
                         <h4>Notes</h4>
