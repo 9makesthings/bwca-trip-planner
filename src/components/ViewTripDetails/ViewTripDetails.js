@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+// import Packlist from './Packlist';
+// import MealPlanDetails from './MealPlanDetails';
 
 // Material
 import Card from '@material-ui/core/Card';
@@ -25,8 +27,8 @@ class ViewDetails extends Component {
     render() {
         const trip = this.props.reduxState.tripDetails.tripDetails;
         // const mealPlan = this.props.reduxState.tripDetails.mealPlan;
-        // const packlist = this.props.reduxState.tripDetails.packlist;
-        console.log( `tripDetails:`, trip );
+        const packlist = this.props.reduxState.tripDetails.packlist;
+        console.log( `Packlist:`, packlist );
         console.log( `trip name:`, trip.name );
         
 
@@ -63,17 +65,12 @@ class ViewDetails extends Component {
 
                     <div>
                         <h4>Pack List</h4>
-                        <ul>
-                            {this.state.packlist.map( (item, i) => 
-                                    <li key={i}>{item.name}</li>
-                                )}
-
-                        </ul>
+                        {/* <Packlist/> */}
                     </div>
 
                     <div>
                         <h4>Meal Plan</h4>
-                        
+                        {/* <MealPlanDetails /> */}
                     </div>
 
                     <div>

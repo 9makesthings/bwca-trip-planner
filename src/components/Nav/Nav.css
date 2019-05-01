@@ -31,9 +31,9 @@
 
 .nav-link:hover {
   /* background-color: #008183; */
-  border-bottom-color: #353232;
+  /* border-bottom-color: #353232;
   border-bottom-style: solid;
-  border-bottom-width: 1px;
+  border-bottom-width: 1px; */
   font-size: 17px;
 }
 
