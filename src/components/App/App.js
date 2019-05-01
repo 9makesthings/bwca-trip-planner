@@ -19,6 +19,8 @@ import MyTrips from '../MyTrips/MyTrips';
 import ViewTripDetails from '../ViewTripDetails/ViewTripDetails';
 
 import './App.css';
+// import materialUI
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 class App extends Component {
   componentDidMount () {
@@ -28,6 +30,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <MuiThemeProvider theme={theme} >
         <div>
           <Nav />
           <Switch>
@@ -65,8 +68,23 @@ class App extends Component {
           </Switch>
           <Footer />
         </div>
+        </MuiThemeProvider>
       </Router>
   )}
 }
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { 
+      main: '#007c91',
+      contrastText: '#ffffff'  },
+    seconday: { 
+      main: '#e0f7fa',
+      contrastText: '#000000' }, 
+    background: {
+      default: (235, 244, 243),
+    },
+  }
+});
 
 export default connect()(App);

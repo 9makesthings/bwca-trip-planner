@@ -3,7 +3,7 @@ const tripInputs = {
     user_id: '',
     name: '',
     trip_date: null,
-    number_days: 2,
+    number_days: 5,
     group_size: 1,
     difficulty: 3,
     route_id: null

@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+// import Packlist from './Packlist';
+// import MealPlanDetails from './MealPlanDetails';
 
 // Material
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+// import FormGroup from '@material-ui/core/FormGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 
 class ViewDetails extends Component {
+
+    state = {
+        packlist: this.props.reduxState.tripDetails.packlist || [],
+    }
 
     componentDidMount(){
         // console.log( `History props:`, this.props.location.search );
@@ -19,7 +28,7 @@ class ViewDetails extends Component {
         const trip = this.props.reduxState.tripDetails.tripDetails;
         // const mealPlan = this.props.reduxState.tripDetails.mealPlan;
         const packlist = this.props.reduxState.tripDetails.packlist;
-        console.log( `tripDetails:`, trip );
+        console.log( `Packlist:`, packlist );
         console.log( `trip name:`, trip.name );
         
 
@@ -56,11 +65,12 @@ class ViewDetails extends Component {
 
                     <div>
                         <h4>Pack List</h4>
+                        {/* <Packlist/> */}
                     </div>
 
                     <div>
                         <h4>Meal Plan</h4>
-                        
+                        {/* <MealPlanDetails /> */}
                     </div>
 
                     <div>
