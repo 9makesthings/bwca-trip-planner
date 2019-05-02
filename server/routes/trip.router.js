@@ -75,7 +75,7 @@ router.get('/trip_details/:id', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT "trip_plan"."trip_date", 
                 "trip_plan"."number_days", "trip_plan"."group_size", 
                 "trip_plan"."difficulty", "trip_plan"."name",
-                "trip_plan"."completed", 
+                "trip_plan"."completed", "trip_plan"."notes", 
                 "route"."name" AS "route_name",
                 "route"."distance", "route"."description",
                 "route"."image_url"
@@ -93,9 +93,24 @@ router.get('/trip_details/:id', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// router.put( '/', rejectUnauthenticated, (req, res) => {
-//     let 
-// })
+router.put( '/:id', rejectUnauthenticated, (req, res) => {
+    let trip_id = req.params.id;
+    console.log( `in PUT trip_plan..`, req.body.notes);
+    
+
+    let sqlText = `UPDATE "trip_plan" 
+                        SET "notes" = $1
+                        WHERE "id" = $2;`;
+
+    pool.query( sqlText, [ req.body.notes, trip_id ] )
+        .then( (response) => {
+            res.sendStatus(201);
+        })
+        .catch( (error) => {
+            console.log( `Couldn't save notes.`, error );
+            res.sendStatus(500);
+        })
+})
 
 
 module.exports = router;

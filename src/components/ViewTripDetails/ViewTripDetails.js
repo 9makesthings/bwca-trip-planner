@@ -11,9 +11,10 @@ import { withStyles } from '@material-ui/core/styles';
 class ViewDetails extends Component {
 
     state = {
-        packlist: this.props.reduxState.tripDetails.packlist || [],
-        notes: '',
+        notes: this.props.reduxState.tripDetails.tripDetails.notes,
         editStateOff: true,
+        trip_id: 0,
+        tripMealPlan: [],
     }
 
     componentDidMount(){
@@ -22,6 +23,12 @@ class ViewDetails extends Component {
         let id = query.substr(1);
         // console.log( `id is:`, id );
         this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id} );
+
+        this.setState({
+            ...this.state,
+            trip_id: Number(id)
+            
+        })
     }
 
     handleChange = (name) => (event) => {
@@ -35,8 +42,9 @@ class ViewDetails extends Component {
         })
     }
 
-    handleSave = (event) => {
-        // this.props.dispatch( {type: 'UPDATE_TRIP_DETAILS', payload: ????} );
+    handleSave = (newAction) => {
+        this.props.dispatch( {type: 'UPDATE_TRIP', payload: this.state} );
+
         this.setState({
             ...this.state,
             editStateOff: !this.state.editStateOff
@@ -86,7 +94,8 @@ class ViewDetails extends Component {
 
                     <Packlist editState={this.state.editStateOff} />
 
-                    <MealPlanDetails editState={this.state.editStateOff} />
+                    <MealPlanDetails editState={this.state.editStateOff}
+                        tripMealPlan={this.state.tripMealPlan} />
 
                     <div>
                         <h4>Notes</h4>

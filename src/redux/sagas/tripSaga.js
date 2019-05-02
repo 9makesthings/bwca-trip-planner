@@ -40,7 +40,6 @@ function* deleteTrip(action) {
 }
 
 function* getTripDetails(action) {
-    // put things here!
     try {
         const tripResponse = yield axios.get( `/api/trip/trip_details/${action.payload}`);
         yield put( {type: 'SET_DETAILS', payload: tripResponse.data} );
@@ -55,6 +54,20 @@ function* getTripDetails(action) {
     }
 }
 
+function* updateTrip(action) {
+    try {
+        // yield axios.put( `/api/meal/${action.payload.trip_id}`, action.payload);
+        console.log( `in UPDATE TRIP`, action.payload.trip_id );
+        
+        yield axios.put( `/api/trip/${action.payload.trip_id}`, action.payload);
+        // might need to run GET again
+    }
+    catch (error) {
+        console.log( `Couldn't update trip details.`, error );
+        alert( `Couldn't update trip at this time. Try again later.` );
+    }
+}
+
 function* tripSaga() {
     // POST all trip data, 
     yield takeLatest('SAVE_TRIP', saveNewTrip);
@@ -62,9 +75,10 @@ function* tripSaga() {
     yield takeEvery('GET_USER_TRIPS', getUsersTrips);
     // DELETE trip from My Trips
     yield takeLatest('DELETE_TRIP', deleteTrip);
-    // UPDATE_TRIP
     // GET_TRIP_BY_ID
     yield takeLatest('GET_TRIP_DETAILS', getTripDetails);
+    // UPDATE_TRIP
+    yield takeLatest( 'UPDATE_TRIP', updateTrip );
   }
 
 export default tripSaga;
