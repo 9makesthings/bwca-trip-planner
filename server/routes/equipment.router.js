@@ -27,7 +27,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post( '/:id', rejectUnauthenticated, (req, res) => {
     let trip_id = req.params.id;
     
-    let equipment = req.body.equipment;
+    let equipment = req.body;
 
     for( let i=0; i < equipment.length; i++ ){
         

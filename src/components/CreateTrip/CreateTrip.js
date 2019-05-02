@@ -11,6 +11,10 @@ import SaveTrip from './SaveTrip/SaveTrip';
 
 class CreateTrip extends Component {
 
+    componentDidMount(){
+        this.props.dispatch( {type: 'GET_EQUIPMENT'});
+    }
+
     render() {
         const activeStep = this.props.reduxState.progress;
         let stepPath;

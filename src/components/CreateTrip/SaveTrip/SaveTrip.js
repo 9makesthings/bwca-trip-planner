@@ -13,7 +13,7 @@ class SaveTrip extends Component {
     componentDidMount(){
 
         this.props.dispatch( {type: 'GET_ROUTE_BY_ID', 
-                    payload: {route_id: this.props.reduxState.tripInputs.route_id} } );
+            payload: {route_id: this.props.reduxState.tripInputs.route_id} } );
     }
 
     render() {
