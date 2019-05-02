@@ -11,7 +11,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM "equipment"
                     WHERE "type" = 'shared'
                     ORDER BY "code"
-                    LIMIT 5;`;
+                    LIMIT 15;`;
 
     pool.query( sqlText )
         .then( (result) => {

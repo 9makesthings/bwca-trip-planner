@@ -27,6 +27,11 @@ hr {
     margin-bottom: 20px;
 }
 
+.packlist-checklist {
+    columns: 250px 3;
+    column-fill: auto;
+}
+
 .packlist-card p, li {
     font-size: 14px;
 }

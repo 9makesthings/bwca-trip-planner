@@ -68,4 +68,32 @@ router.get('/meal_details/:id', rejectUnauthenticated, (req, res) => {
         })
 });
 
+
+router.put( '/:id', rejectUnauthenticated, (req, res) => {
+    let trip_id = req.params.id;
+    let mealplan = req.body.mealPlan;
+
+    for( let i=0; i < mealplan.length; i++ ){
+        
+        let day = mealplan[i].day;
+        let breakfast = mealplan[i].breakfast;
+        let lunch = mealplan[i].lunch;
+        let dinner = mealplan[i].dinner;
+
+        let sqlText = `UPDATE "meal_plan" 
+                        SET "breakfast" = $1, "lunch" = $2, "dinner" = $3
+                        WHERE "trip_plan_id" = $4
+                        AND "day" = $5;`;
+
+        pool.query( sqlText, [ breakfast, lunch, dinner, trip_id, day ] )
+            .then( (response) => {
+                res.sendStatus(201);
+            })
+            .catch( (error) => {
+                console.log( `Couldn't save meal plan.`, error );
+                res.sendStatus(500);
+            })
+    }
+})
+
 module.exports = router;

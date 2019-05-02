@@ -9,35 +9,98 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Card } from '@material-ui/core';
+import { FormControl } from '@material-ui/core';
 
 class MealPlanDetails extends Component {
 
+    state = {
+        mealPlan: []
+    }
+
+    handleChange = (i, name) => (event) => {
+        console.log( `MEALPLAN STATE`, this.state );
+        
+        let newMealPlan = [...this.props.reduxState.tripDetails.mealPlan];
+        
+        let value = event.target.value;
+        newMealPlan[i][name]= value;
+
+        this.setState({
+            ...this.state,
+            mealPlan: newMealPlan
+        })
+    }
 
     render(){
+        const tripMealPlan = this.props.reduxState.tripDetails.mealPlan;
         let mealplan;
-        if(this.props.reduxState.tripDetails.mealPlan){
-            mealplan = 
-                this.props.reduxState.tripDetails.mealPlan.map( (day, i) => 
-                    <TableRow key={i} >
-                        <TableCell>{day.day}</TableCell>
-        
-                        <TableCell>
-                            {day.breakfast}
-                        </TableCell>
-        
-                        <TableCell>
-                            {day.lunch}
-                        </TableCell>
-        
-                        <TableCell>
-                            {day.dinner}
-                        </TableCell>
-                    </TableRow>
-                )
+        if(this.props.editState === true){
+            if(tripMealPlan){
+                mealplan = 
+                    tripMealPlan.map( (day, i) => 
+                        <TableRow key={i} >
+                            <TableCell>{day.day}</TableCell>
+                            <TableCell>{day.breakfast}</TableCell>
+                            <TableCell>{day.lunch}</TableCell>
+                            <TableCell>{day.dinner}</TableCell>
+                        </TableRow>
+                    )
+            } else {
+                mealplan = null;
+            } // end conditional render of mealplan view only
         } else {
-            mealplan = null;
+            if(tripMealPlan){
+                mealplan = 
+                    tripMealPlan.map( (day, i) => 
+                        <TableRow key={i} >
+                            <TableCell>{day.day}</TableCell>
+
+                            <TableCell>
+                                <FormControl>
+                                    <Select name="breakfast" value={day.breakfast}
+                                            onChange={this.handleChange(i, 'breakfast')}>
+                                        <MenuItem value="Instant Oatmeal" >Instant Oatmeal</MenuItem>
+                                        <MenuItem value="Pancake Mix" >Pancake Mix</MenuItem>
+                                        <MenuItem value="Breakfast Bars" >Breakfast Bars</MenuItem>
+                                        <MenuItem value="Granola" >Granola</MenuItem>
+                                        <MenuItem value="Breakfast Skillet" >Breakfast Skillet</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </TableCell>
+            
+                            <TableCell>
+                                <FormControl>
+                                    <Select name="lunch" value={day.lunch} 
+                                            onChange={this.handleChange(i, 'lunch')}>
+                                        <MenuItem value="Jerky & Cheese" >Jerky & Cheese</MenuItem>
+                                        <MenuItem value="Beef Sticks & Cheese" >Beef Sticks & Cheese</MenuItem>
+                                        <MenuItem value="Energy Bar" >Energy Bar</MenuItem>
+                                        <MenuItem value="Trail Mix" >Trail Mix</MenuItem>
+                                        <MenuItem value="Tortillas, PB & J" >Tortillas, PB & J</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </TableCell>
+            
+                            <TableCell>
+                                <FormControl>
+                                    <Select name="dinner" value={day.dinner} 
+                                            onChange={this.handleChange(i, 'dinner')}>
+                                        <MenuItem value="Chili Mac" >Chili Mac</MenuItem>
+                                        <MenuItem value="Pad Thai" >Pad Thai</MenuItem>
+                                        <MenuItem value="Beef Stroganoff" >Beef Stroganoff</MenuItem>
+                                        <MenuItem value="Chicken Fajita Bowl" >Chicken Fajita Bowl</MenuItem>
+                                        <MenuItem value="Lasagna" >Lasagna</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </TableCell>
+                        </TableRow>
+                    )
+            } else {
+                mealplan = null;
+            } // end conditional render of mealplan editable table
         }
+
+
         return(
             <div className="mealplan-card">
                 <h4>Meal Plan</h4>

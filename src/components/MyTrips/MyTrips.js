@@ -35,14 +35,15 @@ class MyTrips extends Component {
 
                 {this.props.reduxState.userTrips.map( trip =>
                     <Card key={trip.id} className="trip-card"
-                            onClick={this.viewDetails(trip.id, trip.name)} >
+                            // onClick={this.viewDetails(trip.id, trip.name)} 
+                            >
                         <h4>{trip.name}</h4>
                         <p>{trip.group_size} people
                             <br/>{trip.number_days} days
                         </p>
 
-                        {/* <Button value={trip.id} name={trip.name}
-                            onClick={this.viewDetails} >Details</Button> */}
+                        <Button value={trip.id} name={trip.name}
+                            onClick={this.viewDetails(trip.id, trip.name)} >Details</Button>
                         <Button value={trip.id}
                             onClick={this.handleDelete} >Delete</Button>
                     </Card>

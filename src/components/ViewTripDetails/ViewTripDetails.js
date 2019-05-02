@@ -5,12 +5,15 @@ import MealPlanDetails from './MealPlanDetails';
 import './ViewTripDetails.css';
 
 // Material
-import Card from '@material-ui/core/Card';
+import {TextField, Button} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 class ViewDetails extends Component {
 
     state = {
         packlist: this.props.reduxState.tripDetails.packlist || [],
+        notes: '',
+        editStateOff: true,
     }
 
     componentDidMount(){
@@ -21,13 +24,39 @@ class ViewDetails extends Component {
         this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id} );
     }
 
+    handleChange = (name) => (event) => {
+        this.setState({ [name]: event.target.value });
+      };
+
+    handleEdit = (event) => {
+        this.setState({
+            ...this.state,
+            editStateOff: !this.state.editStateOff
+        })
+    }
+
+    handleSave = (event) => {
+        // this.props.dispatch( {type: 'UPDATE_TRIP_DETAILS', payload: ????} );
+        this.setState({
+            ...this.state,
+            editStateOff: !this.state.editStateOff
+        })
+    }
+
     render() {
+        // const { classes } = this.props;
         const trip = this.props.reduxState.tripDetails.tripDetails;
-        // const mealPlan = this.props.reduxState.tripDetails.mealPlan;
-        const packlist = this.props.reduxState.tripDetails.packlist;
-        console.log( `Packlist:`, packlist );
-        console.log( `trip name:`, trip.name );
-        
+
+        let button;
+        if( this.state.editStateOff === true ){
+            button = <Button variant="outlined" 
+                    onClick={this.handleEdit}
+                >Edit</Button>
+        } else {
+            button = <Button variant="contained" color="primary" 
+                    onClick={this.handleSave}
+                >Save</Button>
+        }
 
         return(
             <div className="view-details">
@@ -55,21 +84,48 @@ class ViewDetails extends Component {
                         </div>
                     </div>
 
-                    <Packlist/>
+                    <Packlist editState={this.state.editStateOff} />
 
-                    <MealPlanDetails />
+                    <MealPlanDetails editState={this.state.editStateOff} />
 
                     <div>
                         <h4>Notes</h4>
+                        <TextField
+                            label="Notes" multiline fullWidth
+                            rows="5" variant="outlined"
+                            disabled={this.state.editStateOff}
+                            value={this.state.notes}
+                            onChange={this.handleChange('notes')}
+                            margin="normal"
+                        />
                     </div>
+
+                    {button}
                 </div>
             </div>
         );
     }
 }
 
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+    },
+    dense: {
+      marginTop: 16,
+    },
+    menu: {
+      width: 200,
+    },
+  });
+
 const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
 
-export default connect(mapReduxStateToProps)(ViewDetails);
+export default connect(mapReduxStateToProps)(withStyles(styles)(ViewDetails));
