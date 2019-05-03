@@ -13,8 +13,7 @@ class ViewDetails extends Component {
     state = {
         notes: this.props.reduxState.tripDetails.tripDetails.notes,
         editStateOff: true,
-        trip_id: 0,
-        tripMealPlan: [],
+        trip_id: 0
     }
 
     componentDidMount(){
@@ -42,8 +41,8 @@ class ViewDetails extends Component {
         })
     }
 
-    handleSave = (newAction) => {
-        this.props.dispatch( {type: 'UPDATE_TRIP', payload: this.state} );
+    handleSave = () => {
+        this.props.dispatch( {type: 'UPDATE_TRIP_NOTES', payload: this.state} );
 
         this.setState({
             ...this.state,
@@ -92,10 +91,9 @@ class ViewDetails extends Component {
                         </div>
                     </div>
 
-                    <Packlist editState={this.state.editStateOff} />
+                    <Packlist trip_id={this.state.trip_id} />
 
-                    <MealPlanDetails editState={this.state.editStateOff}
-                        tripMealPlan={this.state.tripMealPlan} />
+                    <MealPlanDetails trip_id={this.state.trip_id} />
 
                     <div>
                         <h4>Notes</h4>

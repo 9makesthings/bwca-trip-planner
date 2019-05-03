@@ -9,12 +9,13 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { FormControl } from '@material-ui/core';
+import { FormControl, Button } from '@material-ui/core';
 
 class MealPlanDetails extends Component {
 
     state = {
-        mealPlan: []
+        mealPlan: [],
+        editStateOff: true,
     }
 
     handleChange = (i, name) => (event) => {
@@ -31,11 +32,34 @@ class MealPlanDetails extends Component {
         })
     }
 
+    handleEdit = (event) => {
+        this.setState({
+            ...this.state,
+            editStateOff: !this.state.editStateOff
+        })
+    }
+
+    handleSave = () => {
+        const saveData = {
+            mealPlan: this.state.mealPlan,
+            trip_id: this.props.trip_id
+        }
+        this.props.dispatch( {type: 'UPDATE_MEALPLAN', payload: saveData} );
+
+        this.setState({
+            ...this.state,
+            editStateOff: !this.state.editStateOff
+        })
+    }
+
     render(){
         const tripMealPlan = this.props.reduxState.tripDetails.mealPlan;
         let mealplan;
-        if(this.props.editState === true){
+        let button;
+        if(this.state.editStateOff === true){
             if(tripMealPlan){
+                button = <Button variant="outlined" 
+                    onClick={this.handleEdit} >Edit</Button>
                 mealplan = 
                     tripMealPlan.map( (day, i) => 
                         <TableRow key={i} >
@@ -50,6 +74,8 @@ class MealPlanDetails extends Component {
             } // end conditional render of mealplan view only
         } else {
             if(tripMealPlan){
+                button = <Button variant="contained" color="primary" 
+                    onClick={this.handleSave} >Save</Button>
                 mealplan = 
                     tripMealPlan.map( (day, i) => 
                         <TableRow key={i} >
@@ -118,7 +144,7 @@ class MealPlanDetails extends Component {
                         {mealplan}
                     </TableBody>
                 </Table>
-
+                {button}
             </div>
         );
     }

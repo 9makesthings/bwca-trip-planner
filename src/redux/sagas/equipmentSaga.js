@@ -12,8 +12,20 @@ function* getEquipment() {
     }
 }
 
+function* updatePacklist(action) {
+    try {
+        yield axios.put( `/api/meal/${action.payload.trip_id}`, action.payload );
+        yield put( {type: 'GET_TRIP_DETAILS', payload: action.payload.trip_id} );
+    }
+    catch (error) {
+        console.log( `Couldn't update mealplan details.`, error );
+        alert( `Couldn't update trip at this time. Try again later.` );
+    }
+}
+
 function* equipmentSaga() {
-    yield takeLatest('GET_EQUIPMENT', getEquipment);
+    yield takeLatest( 'GET_EQUIPMENT', getEquipment );
+    yield takeLatest( 'UPDATE_PACKLIST', updatePacklist );
   }
 
 export default equipmentSaga;

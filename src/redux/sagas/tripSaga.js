@@ -54,13 +54,12 @@ function* getTripDetails(action) {
     }
 }
 
-function* updateTrip(action) {
+function* updateTripNotes(action) {
     try {
         // yield axios.put( `/api/meal/${action.payload.trip_id}`, action.payload);
-        console.log( `in UPDATE TRIP`, action.payload.trip_id );
-        
         yield axios.put( `/api/trip/${action.payload.trip_id}`, action.payload);
         // might need to run GET again
+        yield put( {type: 'GET_TRIP_DETAILS', payload: action.payload.trip_id} );
     }
     catch (error) {
         console.log( `Couldn't update trip details.`, error );
@@ -78,7 +77,7 @@ function* tripSaga() {
     // GET_TRIP_BY_ID
     yield takeLatest('GET_TRIP_DETAILS', getTripDetails);
     // UPDATE_TRIP
-    yield takeLatest( 'UPDATE_TRIP', updateTrip );
+    yield takeLatest( 'UPDATE_TRIP_NOTES', updateTripNotes );
   }
 
 export default tripSaga;

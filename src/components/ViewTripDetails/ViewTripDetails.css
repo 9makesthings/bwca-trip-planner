@@ -32,6 +32,10 @@ hr {
     column-fill: auto;
 }
 
+.packlist-checklist>label {
+    width: 100%;
+}
+
 .packlist-card p, li {
     font-size: 14px;
 }

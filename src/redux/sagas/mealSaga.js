@@ -16,7 +16,7 @@ function* getMealPlan(action) {
 function* saveMealPlan(action) {
     try {
         console.log( `saving mealplan, tripId?`, action.payload );
-        
+
         yield axios.post( `/api/meal/${action.payload.tripId}`, action.payload.mealPlan );
     }
     catch (error) {
@@ -25,10 +25,21 @@ function* saveMealPlan(action) {
     }
 }
 
+function* updateMealPlan(action) {
+    try {
+        yield axios.put( `/api/meal/${action.payload.trip_id}`, action.payload );
+        yield put( {type: 'GET_TRIP_DETAILS', payload: action.payload.trip_id} );
+    }
+    catch (error) {
+        console.log( `Couldn't update mealplan details.`, error );
+        alert( `Couldn't update trip at this time. Try again later.` );
+    }
+}
 
 function* mealSaga() {
     yield takeLatest( 'GET_MEALPLAN', getMealPlan );
     yield takeLatest( 'SAVE_MEALPLAN', saveMealPlan );
+    yield takeLatest( 'UPDATE_MEALPLAN', updateMealPlan );
 }
 
 export default mealSaga;
