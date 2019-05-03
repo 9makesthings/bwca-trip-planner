@@ -16,10 +16,12 @@
 
 .div-left p {
     font-weight: 300;
+    filter: drop-shadow(0 0 30px rgb(26, 26, 26));
 }
 
 .home-header {
     font-weight: 500;
+    filter: drop-shadow(0 0 30px rgb(26, 26, 26));
 }
 
 .div-right {
@@ -27,8 +29,8 @@
 }
 
 img {
-    width: 100%;
-    float: right;
+    width: 110%;
+    /* float: right; */
 }
 
 .plan-button {

@@ -8,11 +8,46 @@
     margin-top: 40px;
 }
 
+.step-intro {
+    width: 60%;
+    text-align: center;
+    margin: auto;
+}
+
 .nav-buttons {
     float: right;
     margin-right: 10%
 }
 
+.step-one-q {
+    /* height: 40px; */
+    padding: 10px;
+    line-height: 40px;
+    white-space: nowrap;
+}
+
+.difficulty {
+    display: flex;
+    margin-top: 20px;
+    padding: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.slider {
+    width: 80%;
+    margin: auto;
+    display: inline;
+}
+.difficulty.material-icons {
+    display: inline;
+    margin: auto;
+}
+
+.material-icons {
+    font-size: 36px;
+    transform: rotateY(180deg);
+}
 
 .step-card {
     width: 80%;
@@ -57,10 +92,12 @@
 .packlist-checklist {
     columns: 250px 3;
     column-fill: auto;
+    margin: auto;
 }
 
 .packlist-checklist>label {
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .meal-table {

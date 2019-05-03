@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     button: {
       margin: theme.spacing.unit,
-      width: 180,
+      width: 150,
     },
     input: {
       display: 'none',

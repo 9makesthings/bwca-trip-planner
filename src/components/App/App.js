@@ -84,7 +84,13 @@ const theme = createMuiTheme({
     background: {
       default: (235, 244, 243),
     },
-  }
+  },
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      'Montserrat',
+    ],
+  },
 });
 
 export default connect()(App);
