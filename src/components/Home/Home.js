@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     button: {
       margin: theme.spacing.unit,
+      width: 180,
     },
     input: {
       display: 'none',
@@ -31,18 +32,17 @@ class Home extends Component {
         const {classes} = this.props;
         
         return(
-            <div>
+            <div className="home" >
                 <div className="div-left" >
-                    <h2>This is the home page!</h2>
+                    <h2 className="home-header">Start planning your trip to the Boundary Waters!</h2>
 
-                    <p>This is some intro text...
-                    Lorem ipsum dolor sit amet, pro feugiat aliquando in. Nam summo mollis necessitatibus ad, vim ex nihil clita. Id mei mollis veritus mentitum, sed ullum eloquentiam definitiones in. An eum ubique prodesset voluptaria, sit ei tollit theophrastus.
+                    <p>This trip planner is intended to provide a user-friendly and informational guide to planning a trip to the Boundary Waters. The goal is to make it easier for anyone to plan their next trip north. 
                     </p>
 
                     <Button variant="contained" color="primary"
                         className={classes.button}
                         onClick={this.routeCreateTrip} value="createTrip" >Plan a Trip</Button>
-                    <Button variant="outlined"
+                    <Button variant="contained" color="secondary"
                         className={classes.button}
                         onClick={this.routeMyTrips} value="myTrips" >My Trips</Button>
                 </div>

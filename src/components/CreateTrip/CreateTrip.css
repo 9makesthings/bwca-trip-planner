@@ -53,6 +53,16 @@
     width: 75%;
 }
 
+
+.packlist-checklist {
+    columns: 250px 3;
+    column-fill: auto;
+}
+
+.packlist-checklist>label {
+    width: 100%;
+}
+
 .meal-table {
     width: 80%;
     padding: 10px;

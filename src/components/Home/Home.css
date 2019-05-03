@@ -1,21 +1,36 @@
+.home {
+    display: flex;
+    position: relative;
+}
+
 .div-left {
-    /* display: inline-block; */
-    /* float: left; */
+    display: inline-block;
     padding: 10px;
+    margin: 20px;
+    width: 40%;
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    color: rgb(255, 255, 255);
+}
+
+.div-left p {
+    font-weight: 300;
+}
+
+.home-header {
+    font-weight: 500;
 }
 
 .div-right {
-    /* display: inline-block; */
-    float: right;
-    padding: 10px;
-    margin: 10px;
+    display: inline-block;
 }
 
 img {
-    width: 40%;
+    width: 100%;
     float: right;
 }
 
 .plan-button {
-    margin-left: 20px;
+    margin-left: 30px;
 }

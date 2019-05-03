@@ -7,7 +7,8 @@ import './Nav.css';
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">BWCA Trip Planner</h2>
+      <i class="material-icons md-36">explore</i>
+      <h2 className="nav-title">PaddleNorth</h2>
     </Link>
 
     <div className="nav-right">
@@ -21,14 +22,6 @@ const Nav = (props) => (
       <Link className="nav-link" to="/my-trips">
         My Trips
       </Link>
-
-        {/* ORIGINAL CODE */}
-      {/* <Link className="nav-link" to="/my-trips"> */}
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-        {/* {props.user.id ? 'My Trips' : 'Login / Register'}
-      </Link> */}
 
       {/* <Link className="nav-link" to="/resources">
         Resources
