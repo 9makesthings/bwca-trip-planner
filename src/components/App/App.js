@@ -31,7 +31,6 @@ class App extends Component {
     return (
       <Router>
         <MuiThemeProvider theme={theme} >
-        <div>
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -67,7 +66,6 @@ class App extends Component {
             <Route render={() => <h1>404</h1>} />
           </Switch>
           <Footer />
-        </div>
         </MuiThemeProvider>
       </Router>
   )}
@@ -76,7 +74,7 @@ class App extends Component {
 const theme = createMuiTheme({
   palette: {
     primary: { 
-      main: '#007c91',
+      main: '#005662',
       contrastText: '#ffffff'  },
     secondary: { 
       main: '#e0f7fa',

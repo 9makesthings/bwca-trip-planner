@@ -29,7 +29,7 @@ class SaveTrip extends Component {
                 <div>
                     <Card className="save-card" >
                         <div className="route-card-div" >
-                            <div className="route-img" >
+                            <div className="save-img" >
                                 <img src={route.image_url} alt={route.name} />
                             </div>
 

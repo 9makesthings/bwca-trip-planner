@@ -1,37 +1,44 @@
+html, body, #react-root {
+    height: 100%;
+}
+
 .home {
     display: flex;
     position: relative;
+    height: 100%;
+    background: url(https://images.unsplash.com/photo-1510857817970-2a7060a55c8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80) no-repeat center center;
+    background-size: cover;
 }
 
 .div-left {
     display: inline-block;
-    padding: 10px;
+    padding: 10px 25px;
     margin: 20px;
     width: 40%;
     position: absolute;
     top: 60%;
     transform: translateY(-50%);
     color: rgb(255, 255, 255);
+    /* background-color: rgba(255,255,255,0.15); */
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 4px;
 }
 
 .div-left p {
     font-weight: 300;
-    filter: drop-shadow(0 0 30px rgb(26, 26, 26));
 }
 
 .home-header {
     font-weight: 500;
-    filter: drop-shadow(0 0 30px rgb(26, 26, 26));
 }
 
-.div-right {
+/* .div-right {
     display: inline-block;
 }
 
 img {
-    width: 110%;
-    /* float: right; */
-}
+    width: 100%;
+} */
 
 .plan-button {
     margin-left: 30px;

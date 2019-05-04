@@ -18,9 +18,7 @@ const styles = theme => ({
 
 class Home extends Component {
 
-    // FIX THIS! 
-    routeCreateTrip = (event) => {
-        event.preventDefault();
+    routeCreateTrip = () => {
         this.props.history.push('/create-trip');
     }
 
@@ -46,9 +44,9 @@ class Home extends Component {
                         className={classes.button}
                         onClick={this.routeMyTrips} value="myTrips" >My Trips</Button>
                 </div>
-                <div className="div-right" >
+                {/* <div className="div-right" >
                     <img src="https://images.unsplash.com/photo-1510857817970-2a7060a55c8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt="BWCA" />
-                </div>
+                </div> */}
             </div>
         );
     }

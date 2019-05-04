@@ -69,14 +69,12 @@ class ViewDetails extends Component {
             <div className="view-details">
                 <div className="header">
                     <h1>Trip Details</h1>
-                    <hr/>
+                    {/* <hr/> */}
                 </div>
 
                 <div className="right-div">
                     <h3>Trip: {trip.name}</h3>
-                    <p>{trip.group_size} people
-                    <br/> {trip.number_days} days
-                    </p>
+                    <p>{trip.group_size} people, {trip.number_days} days</p>
 
                     <div className="route" >
                         <div className="route-img" >

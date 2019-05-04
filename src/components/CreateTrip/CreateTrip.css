@@ -96,7 +96,6 @@
     margin-left: 20px;
 }
 
-
 .packlist-checklist {
     columns: 250px 3;
     column-fill: auto;
@@ -122,11 +121,19 @@
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-
 }
 
-.save-card.route-img>img {
+.save-img {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.save-img>img {
     object-fit: cover;
-    width: 200px;
+    width: 220px;
     height: 300px;
 }
+
