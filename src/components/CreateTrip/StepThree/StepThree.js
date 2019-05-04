@@ -79,16 +79,14 @@ class StepThree extends Component {
                 if(item.status === 'have'){
                     currentStatus = true;
                     }
-                {return <FormControlLabel key={i}
-                        control={
-                            <Checkbox name={item.name}
+                return <FormControlLabel key={i}
+                        control={ <Checkbox name={item.name}
                                 checked={currentStatus}
                                 color="primary"
                                 value={item.status} 
-                                onChange={this.handlechange(i)} />
-                        }
+                                onChange={this.handlechange(i)} />}
                         label={item.name}
-                    />}
+                    />
                 });
         } else {
             packlist = null;
@@ -96,6 +94,10 @@ class StepThree extends Component {
 
         return(
             <div>
+                <p className="step-intro" >
+                    This list contains items most people choose to bring along with them on their trips to the Boundary Waters. Select the items you have, those you still need will be saved to your trip plan. Any gear you may need can be purchased or rented from most outfitters.
+                </p>
+
                 {/* {JSON.stringify(this.state.equipment)} */}
 
                 <Card className="step-card" >

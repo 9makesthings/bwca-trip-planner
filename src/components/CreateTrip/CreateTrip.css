@@ -6,6 +6,7 @@
 .step-header {
     text-align: center;
     margin-top: 40px;
+    font-weight: 500
 }
 
 .step-intro {
@@ -60,10 +61,14 @@
 .route-card {
     width: 80%;
     height: 200px;
-    padding: 10px;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.select-button {
+    text-align: right;
+    margin-right: 20px;
 }
 
 .route-card p {
@@ -71,21 +76,24 @@
 }
 
 .route-img {
-    float: right;
+    float: left;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden
 }
+
 .route-img img {
     object-fit: cover;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 .route-info {
+    display: inline-block;
     height: 150px;
-    width: 75%;
+    width: 65%;
+    margin-left: 20px;
 }
 
 
@@ -106,4 +114,19 @@
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.save-card {
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.save-card.route-img>img {
+    object-fit: cover;
+    width: 200px;
+    height: 300px;
 }

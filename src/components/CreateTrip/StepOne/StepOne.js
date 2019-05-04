@@ -50,7 +50,9 @@ class StepOne extends Component {
 
         return(
             <div>
-                <p className="step-intro" >To start, give your trip a name and tell us how many days you'd like to go, how many people are in your group, and how active you'd like to be on this trip.</p>
+                <p className="step-intro" >
+                    To start, give your trip a name and tell us how many days you'd like to go, how many people are in your group, and how active you'd like to be on this trip.
+                </p>
 
                 <Card className="step-card" >
                     <div className="step-one-q" >

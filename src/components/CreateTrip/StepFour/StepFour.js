@@ -41,6 +41,10 @@ class StepFour extends Component {
 
         return(
             <div>
+                <p className="step-intro" >
+                    This table will help you choose meals you might want to take with you on your trip. Some of these items can be purchased at your local grocery store. Dehydrated meals can be purchased at your local outfitters. You can also find food outfitting from most outfitters!
+                </p>
+
                 {/* <Card className="step-card" >
                         <InputLabel>
                             Would you like to pack your own meals or find an outfitter to pack them?

@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 
 
-
 class StepTwo extends Component {
 
     state = {
@@ -31,17 +30,19 @@ class StepTwo extends Component {
             route_id: event.currentTarget.value,
             route: event.currentTarget.name,
         });
-        console.log( `Chosen route id:`, event.currentTarget.value, event.currentTarget.name );
-        
     } 
 
     render() {
         const stepAction = {type: 'ADD_ROUTE_ID', payload: this.state};
 
+
         return(
             <div>
+                <p className="step-intro" >
+                    Here are some possible routes that match the number of days and intensity you chose in the last step.
+                </p>
+
                 {this.props.reduxState.routeData.map( route => 
-                        // <RouteCard key={route.id} route={route} />
                         <Card key={route.id} className="route-card" >
                             <div className="route-card-div" >
                                 <div className="route-img" >
@@ -54,12 +55,13 @@ class StepTwo extends Component {
                                     <p>{route.distance} miles, {route.min_days} to {route.max_days} days</p>
                                     <p>{route.description}</p>
                                 </div>
-                                <div className="select-button">
-                                    <Button variant="outlined" size="small"
-                                        name={route}
-                                        value={route.id}
+
+                                <div className="select-button" >
+                                    <Button size="small" color="primary"
+                                        variant={this.state.route_id != route.id ? "outlined" : "contained"}
+                                        name={route} value={route.id}
                                         disabled={this.state.route_id === route.id}
-                                        onClick={this.addRoute} >Select route</Button>
+                                        onClick={this.addRoute} >{this.state.route_id != route.id ? 'Select Route' : 'Route Selected!'}</Button>
                                 </div>
                             </div>
                         </Card>

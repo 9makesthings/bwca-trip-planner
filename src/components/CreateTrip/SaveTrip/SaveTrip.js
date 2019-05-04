@@ -5,8 +5,6 @@ import '../CreateTrip.css';
 
 // Material
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-
 
 class SaveTrip extends Component {
 
@@ -25,31 +23,28 @@ class SaveTrip extends Component {
 
         return(
             <div>
-                <div>
-                    <h4>{tripData.name}</h4>
-                    <p>{tripData.group_size} people
-                    <br/> {tripData.number_days} days
-                    </p>
-                </div>
+
+                <p className="step-intro" >Would you like to save this trip?</p>
 
                 <div>
-                    <Card className="route-card" >
-                        <CardContent>
-                            <div>
+                    <Card className="save-card" >
+                        <div className="route-card-div" >
+                            <div className="route-img" >
                                 <img src={route.image_url} alt={route.name} />
                             </div>
 
-                            <div>
-                                <h4>{route.name}</h4>
+                            <div className="route-info" >
+                                <h3>{tripData.name}</h3>
+                                <p>{tripData.group_size} people, {tripData.number_days} days</p>
+                                <p>{route.distance} miles</p>
 
-                                <p>{route.distance} miles, {route.min_days} to {route.max_days} days</p>
+                                <h5>{route.name}</h5>
+
                                 <p>{route.description}</p>
                             </div>
-                        </CardContent>
+                        </div>
                     </Card>
                 </div>
-
-                <p>Would you like to save this trip?</p>
 
                 <NextButton action={stepAction} />
             </div>
