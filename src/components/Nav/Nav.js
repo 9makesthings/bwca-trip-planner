@@ -29,9 +29,9 @@ return(
         My Trips
       </Link>
 
-      {/* <Link className="nav-link" to="/resources">
+      <Link className={props.location.pathname === '/resources' ? 'active nav-link' : 'nav-link'} to="/resources">
         Resources
-      </Link> */}
+      </Link>
 
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (

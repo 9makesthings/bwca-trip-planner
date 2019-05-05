@@ -6,6 +6,7 @@ import routeSaga from './routeSaga';
 import equipmentSaga from './equipmentSaga';
 import mealSaga from './mealSaga';
 import tripSaga from './tripSaga';
+import outfitterSaga from './outfitterSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     equipmentSaga(),
     mealSaga(),
     tripSaga(),
+    outfitterSaga(),
   ]);
 }

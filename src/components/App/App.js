@@ -17,6 +17,7 @@ import Home from '../Home/Home';
 import CreateTrip from '../CreateTrip/CreateTrip';
 import MyTrips from '../MyTrips/MyTrips';
 import ViewTripDetails from '../ViewTripDetails/ViewTripDetails';
+import Resources from '../Resources/Resources';
 
 import './App.css';
 // import materialUI
@@ -42,6 +43,11 @@ class App extends Component {
               component={Home}
             />
 
+            <Route
+              exact
+              path="/resources"
+              component={Resources}
+            /> 
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.

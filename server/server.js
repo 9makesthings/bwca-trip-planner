@@ -14,6 +14,7 @@ const tripRouter = require('./routes/trip.router');
 const routeRouter = require('./routes/route.router');
 const equipmentRouter = require('./routes/equipment.router');
 const mealRouter = require('./routes/meal.router');
+const outfitterRouter = require('./routes/outfitter.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ app.use('/api/trip', tripRouter);
 app.use('/api/route', routeRouter);
 app.use('/api/equipment', equipmentRouter);
 app.use('/api/meal', mealRouter);
+app.use('/api/outfitter', outfitterRouter);
 
 // Serve static files
 app.use(express.static('build'));

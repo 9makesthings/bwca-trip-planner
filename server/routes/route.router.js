@@ -48,11 +48,5 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         })
 });
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-
-});
 
 module.exports = router;
