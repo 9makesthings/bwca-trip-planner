@@ -25,10 +25,22 @@ input {
     margin-bottom: 10px;
 }
 
+.login-input {
+    /* height: 40px; */
+    padding: 5px;
+    line-height: 35px;
+    white-space: nowrap;
+}
+
+.login-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
 .log-in, .log-out, .register {
   background-color: transparent;
   border-radius: 4px;
-  min-height: 50px;
+  /* min-height: 50px; */
   min-width: 100px;
   outline:0;
   cursor: pointer;

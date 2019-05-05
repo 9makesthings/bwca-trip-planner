@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+// Material UI
+import { Button, TextField } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
 class RegisterPage extends Component {
   state = {
     username: '',
@@ -34,6 +38,8 @@ class RegisterPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
         {this.props.errors.registrationMessage && (
@@ -46,10 +52,11 @@ class RegisterPage extends Component {
         )}
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
-          <div>
+          <div className="login-input" >
             <label htmlFor="name">
               Name:
-              <input
+              <TextField
+                className={classes.textField}
                 type="text"
                 name="name"
                 value={this.state.name}
@@ -57,10 +64,11 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <div>
+          <div className="login-input" >
             <label htmlFor="email">
               Email:
-              <input
+              <TextField
+                className={classes.textField}
                 type="text"
                 name="email"
                 value={this.state.email}
@@ -68,10 +76,11 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <div>
+          <div className="login-input" >
             <label htmlFor="username">
               Username:
-              <input
+              <TextField
+                className={classes.textField}
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -79,10 +88,11 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <div>
+          <div className="login-input" >
             <label htmlFor="password">
               Password:
-              <input
+              <TextField
+                className={classes.textField}
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -90,28 +100,56 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <div>
-            <input
-              className="register"
+          <div className="login-button" >
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
               type="submit"
               name="submit"
               value="Register"
-            />
+              >Register </Button>
           </div>
+          <center>
+            <Button
+              variant="outlined" 
+              type="button"
+              className={classes.button}
+              onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
+            >
+              Login
+            </Button>
+          </center>
         </form>
-        <center>
-          <button
+        {/* <center>
+          <Button
+            variant="outlined" 
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
             Login
-          </button>
-        </center>
+          </Button>
+        </center> */}
       </div>
     );
   }
 }
+
+const styles = theme => ({
+  root: {
+    width: 200,
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  button: {
+    margin: theme.spacing.unit,
+    width: 200,
+  },
+});  
 
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:
@@ -120,5 +158,5 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(RegisterPage);
+export default connect(mapStateToProps)(withStyles(styles)(RegisterPage));
 
