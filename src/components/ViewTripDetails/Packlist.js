@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 
 class Packlist extends Component {
@@ -52,12 +53,14 @@ class Packlist extends Component {
     }
 
     render(){
+        const { classes } = this.props;
         const tripPacklist = this.props.reduxState.tripDetails.packlist;
         let packlist;
         let button;
         if(this.state.editStateOff === true){
             if(tripPacklist){
-                button = <Button variant="outlined" 
+                button = <Button variant="outlined"
+                    className={classes.button} 
                     onClick={this.handleEdit} >Edit</Button>
                 packlist =
                     tripPacklist.map((item, i) => {
@@ -74,6 +77,7 @@ class Packlist extends Component {
         } else {
             if(tripPacklist){
                 button = <Button variant="contained" color="primary" 
+                    className={classes.button}
                     onClick={this.handleSave} >Save</Button>
                 packlist = tripPacklist.map((item, i) => {
                         let currentStatus = false;    
@@ -97,9 +101,9 @@ class Packlist extends Component {
 
 
         return(
-            <div className="packlist-card">
-                <h4>Pack List</h4>
-                <p>Items needed:</p>
+            <div className="info-form-card" >
+                <h3>Pack List</h3>
+                {/* <p>Items needed:</p> */}
 
                 <div className="packlist-checklist" >
                         {packlist}
@@ -110,8 +114,15 @@ class Packlist extends Component {
     }
 }
 
+const styles = theme => ({
+    button: {
+        margin: '20px 30px 0 0',
+        float: 'right',
+    },
+  });
+
 const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
 
-export default connect(mapReduxStateToProps)(Packlist);
+export default connect(mapReduxStateToProps)(withStyles(styles)(Packlist));

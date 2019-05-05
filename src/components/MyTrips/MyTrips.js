@@ -38,15 +38,28 @@ class MyTrips extends Component {
                         <Card key={trip.id} className="trip-card"
                                 // onClick={this.viewDetails(trip.id, trip.name)} 
                                 >
-                            <h4>{trip.name}</h4>
-                            <p>{trip.group_size} people
-                                <br/>{trip.number_days} days
-                            </p>
+                            <div className="trip-card-text" >
+                                <h4>{trip.name}</h4>
+                                <p>{trip.group_size} people
+                                <br/>{trip.number_days} days 
+                                <br/>{trip.distance} miles
+                                </p>
+                            </div>
 
-                            <Button value={trip.id} name={trip.name}
-                                onClick={this.viewDetails(trip.id, trip.name)} >Details</Button>
-                            <Button value={trip.id}
-                                onClick={this.handleDelete} >Delete</Button>
+                            <img src={trip.image_url} alt={trip.route_name} />
+
+                            <div className="details-button">
+                                <Button value={trip.id} name={trip.name} 
+                                    // variant="contained" color="primary"
+                                    onClick={this.viewDetails(trip.id, trip.name)} >View Details</Button>
+                            </div>
+
+                            <div className="delete-button">
+                                <Button value={trip.id}
+                                    onClick={this.handleDelete} >
+                                        <i class="material-icons md-18">delete_outline</i>
+                                    </Button>
+                            </div>
                         </Card>
                     )}
                 </div>

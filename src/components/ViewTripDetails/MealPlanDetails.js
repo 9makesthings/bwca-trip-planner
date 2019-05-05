@@ -10,6 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { FormControl, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
 class MealPlanDetails extends Component {
 
@@ -53,12 +54,14 @@ class MealPlanDetails extends Component {
     }
 
     render(){
+        const { classes } = this.props;
         const tripMealPlan = this.props.reduxState.tripDetails.mealPlan;
         let mealplan;
         let button;
         if(this.state.editStateOff === true){
             if(tripMealPlan){
                 button = <Button variant="outlined" 
+                    className={classes.button}
                     onClick={this.handleEdit} >Edit</Button>
                 mealplan = 
                     tripMealPlan.map( (day, i) => 
@@ -75,6 +78,7 @@ class MealPlanDetails extends Component {
         } else {
             if(tripMealPlan){
                 button = <Button variant="contained" color="primary" 
+                    className={classes.button}
                     onClick={this.handleSave} >Save</Button>
                 mealplan = 
                     tripMealPlan.map( (day, i) => 
@@ -128,10 +132,10 @@ class MealPlanDetails extends Component {
 
 
         return(
-            <div className="mealplan-card">
-                <h4>Meal Plan</h4>
+            <div className="info-form-card" >
+                <h3>Meal Plan</h3>
 
-                <Table>
+                <Table className={classes.table} >
                     <TableHead>
                         <TableRow>
                             <TableCell>Day</TableCell>
@@ -150,8 +154,18 @@ class MealPlanDetails extends Component {
     }
 }
 
+const styles = theme => ({
+    button: {
+        margin: '20px 30px 0 0',
+        float: 'right',
+    },
+    table: {
+        fontSize: '0.875rem',
+    },
+  });
+
 const mapReduxStateToProps = (reduxState) => ({
     reduxState,
 });
 
-export default connect(mapReduxStateToProps)(MealPlanDetails);
+export default connect(mapReduxStateToProps)(withStyles(styles)(MealPlanDetails));

@@ -20,7 +20,7 @@ class ViewDetails extends Component {
         // console.log( `History props:`, this.props.location.search );
         let query = this.props.location.search;
         let id = query.substr(1);
-        // console.log( `id is:`, id );
+        console.log( `id is:`, id );
         this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id} );
 
         this.setState({
@@ -51,59 +51,59 @@ class ViewDetails extends Component {
     }
 
     render() {
-        // const { classes } = this.props;
+        const { classes } = this.props;
         const trip = this.props.reduxState.tripDetails.tripDetails;
 
         let button;
         if( this.state.editStateOff === true ){
             button = <Button variant="outlined" 
+                    className={classes.button}
                     onClick={this.handleEdit}
                 >Edit</Button>
         } else {
-            button = <Button variant="contained" color="primary" 
+            button = <Button variant="contained" color="primary"
+                    className={classes.button}
                     onClick={this.handleSave}
                 >Save</Button>
         }
 
         return(
-            <div className="view-details">
-                <div className="header">
+            <div className="right-div">
+                {/* <div className="header">
                     <h1>Trip Details</h1>
-                    {/* <hr/> */}
+                </div> */}
+
+                <div className="detail-card" >
+                    <div className="detail-img" >
+                        <img src={trip.image_url} alt={trip.route_name} />
+                    </div>
+
+                    <div className="route-info" >
+                        <h2>{trip.name}</h2>
+                        <p>{trip.group_size} people, {trip.number_days} days</p>
+
+                        <h4>{trip.route_name}</h4>
+                        <p>{trip.distance} miles</p>
+                        <p>{trip.description}</p>
+                    </div>
                 </div>
 
-                <div className="right-div">
-                    <h3>Trip: {trip.name}</h3>
-                    <p>{trip.group_size} people, {trip.number_days} days</p>
+                <Packlist trip_id={this.state.trip_id} />
 
-                    <div className="route" >
-                        <div className="route-img" >
-                            <img src={trip.image_url} alt={trip.route_name} />
-                        </div>
+                <MealPlanDetails trip_id={this.state.trip_id} />
 
-                        <div className="route-info" >
-                            <h4>{trip.route_name}</h4>
-
-                            <p>{trip.distance} miles</p>
-                            <p>{trip.description}</p>
-                        </div>
-                    </div>
-
-                    <Packlist trip_id={this.state.trip_id} />
-
-                    <MealPlanDetails trip_id={this.state.trip_id} />
-
-                    <div>
-                        <h4>Notes</h4>
-                        <TextField
-                            label="Notes" multiline fullWidth
-                            rows="5" variant="outlined"
-                            disabled={this.state.editStateOff}
-                            value={this.state.notes}
-                            onChange={this.handleChange('notes')}
-                            margin="normal"
-                        />
-                    </div>
+                <div className="info-form-card" >
+                    <h3>Notes</h3>
+                    <TextField
+                        // label="Notes" 
+                        multiline fullWidth
+                        rows="5" variant="outlined"
+                        disabled={this.state.editStateOff}
+                        className={classes.textField}
+                        value={this.state.notes}
+                        onChange={this.handleChange('notes')}
+                        margin="normal"
+                    />
 
                     {button}
                 </div>
@@ -126,6 +126,10 @@ const styles = theme => ({
     },
     menu: {
       width: 200,
+    },
+    button: {
+        margin: '10px 30px 0 0',
+        float: 'right',
     },
   });
 

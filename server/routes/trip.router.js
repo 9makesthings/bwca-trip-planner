@@ -34,9 +34,17 @@ router.get('/:user_id', rejectUnauthenticated, (req, res) => {
     const user_id = req.params.user_id;
     console.log( `in GET trip by user_id...`, user_id );
     
-    let sqlText = `SELECT * FROM "trip_plan" 
-                    WHERE "user_id" = $1
-                    ORDER BY "id";`;
+    let sqlText = `SELECT "trip_plan"."id", "trip_plan"."trip_date", 
+                "trip_plan"."number_days", "trip_plan"."group_size", 
+                "trip_plan"."difficulty", "trip_plan"."name",
+                "trip_plan"."completed", "trip_plan"."notes", 
+                "route"."name" AS "route_name",
+                "route"."distance", "route"."description",
+                "route"."image_url"
+            FROM "trip_plan" 
+            JOIN "route" ON "route"."id" = "trip_plan"."route_id"
+            WHERE "user_id" = $1
+            ORDER BY "trip_plan"."id";`;
 
     pool.query( sqlText, [user_id] )
         .then( (result) => {
