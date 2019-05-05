@@ -26,7 +26,6 @@ class ViewDetails extends Component {
         this.setState({
             ...this.state,
             trip_id: Number(id)
-            
         })
     }
 
@@ -50,6 +49,13 @@ class ViewDetails extends Component {
         })
     }
 
+    autofillForm = () => {
+        this.setState({
+            ...this.state,
+            notes: 'Almost ready for the trip! Just a few items left to pack.',
+        })
+    }
+
     render() {
         const { classes } = this.props;
         const trip = this.props.reduxState.tripDetails.tripDetails;
@@ -69,9 +75,6 @@ class ViewDetails extends Component {
 
         return(
             <div className="right-div">
-                {/* <div className="header">
-                    <h1>Trip Details</h1>
-                </div> */}
 
                 <div className="detail-card" >
                     <div className="detail-img" >
@@ -94,14 +97,15 @@ class ViewDetails extends Component {
 
                 <div className="info-form-card" >
                     <h3>Notes</h3>
+
                     <TextField
-                        // label="Notes" 
                         multiline fullWidth
                         rows="5" variant="outlined"
                         disabled={this.state.editStateOff}
                         className={classes.textField}
                         value={this.state.notes}
                         onChange={this.handleChange('notes')}
+                        onClick={this.autofillForm}
                         margin="normal"
                     />
 

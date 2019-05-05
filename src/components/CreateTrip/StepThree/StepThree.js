@@ -68,10 +68,14 @@ class StepThree extends Component {
             equipment: newPacklist
         })
     }
+
+    autofillForm = () => {
+        this.props.dispatch({type: 'AUTOFILL_PACKLIST'});
+    }
     
 
     render() {
-        const stepAction = {type: 'SAVE_EQUIPMENT', payload: this.state.equipment};
+        const stepAction = {type: 'SAVE_EQUIPMENT', payload: this.props.reduxState.equipment};
         let packlist;
         if( this.props.reduxState.equipment ){
             packlist = this.props.reduxState.equipment.map( (item, i) => {
@@ -107,6 +111,9 @@ class StepThree extends Component {
                         {packlist}
 
                     </div>
+                    <div 
+                        className="autofill" 
+                        onClick={this.autofillForm}> </div>
                 </Card>
 
                 <NextButton action={stepAction} />

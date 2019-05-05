@@ -28,7 +28,7 @@ class Packlist extends Component {
         
         this.setState({
             ...this.state,
-            equipment: newPacklist
+            packlist: newPacklist
         })
     }
     
@@ -41,10 +41,13 @@ class Packlist extends Component {
 
     handleSave = () => {
         const saveData = {
-            mealPlan: this.state.packlist,
+            packlist: this.state.packlist,
             trip_id: this.props.trip_id
         }
         this.props.dispatch( {type: 'UPDATE_PACKLIST', payload: saveData} );
+
+        console.log( `SAVE DATA:`, saveData );
+        
 
         this.setState({
             ...this.state,

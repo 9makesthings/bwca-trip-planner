@@ -14,11 +14,11 @@ function* getEquipment() {
 
 function* updatePacklist(action) {
     try {
-        yield axios.put( `/api/meal/${action.payload.trip_id}`, action.payload );
+        yield axios.put( `/api/equipment/${action.payload.trip_id}`, action.payload );
         yield put( {type: 'GET_TRIP_DETAILS', payload: action.payload.trip_id} );
     }
     catch (error) {
-        console.log( `Couldn't update mealplan details.`, error );
+        console.log( `Couldn't update packlist details.`, error );
         alert( `Couldn't update trip at this time. Try again later.` );
     }
 }

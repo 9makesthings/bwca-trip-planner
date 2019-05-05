@@ -67,25 +67,28 @@ router.get('/packlist/:id', rejectUnauthenticated, (req, res) => {
 });
 
 // UPDATE packlist from ViewTripDetails page
-router.put( '/id', rejectUnauthenticated, (req, res) => {
+router.put( '/:id', rejectUnauthenticated, (req, res) => {
     let trip_id = req.params.id;
-    let equipment = req.body;
+    let equipmentList = req.body;
+    console.log( `EQUIPMENT:`, req.body.packlist );
+    
 
-    for( let i=0; i < equipment.length; i++ ){
+    for( let i=0; i < equipmentList.length; i++ ){
         
-        let name = equipment[i].name;
-        let status = equipment[i].status;
+        let name = equipmentList[i].name;
+        let status = equipmentList[i].status;
         
         let sqlText = `UPDATE "packlist"
                     SET "status" = $1
                     WHERE "trip_plan_id" = $2
                     AND "equipment_name" = $3;`;
+
         pool.query( sqlText, [ status, trip_id, name ] )
             .then( (response) => {
                 res.sendStatus(200);
             })
             .catch( (error) => {
-                console.log( `Couldn't save meal plan.`, error );
+                console.log( `Couldn't save updated packlist.`, error );
                 res.sendStatus(500);
             })
     }
