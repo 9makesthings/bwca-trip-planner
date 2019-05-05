@@ -1,0 +1,41 @@
+.resource-intro {
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.resource-card {
+    width: 70%;
+    height: 200px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.resource-card p {
+    font-size: 14px;
+}
+
+.resource-img {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.resource-img img {
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+    max-width: 92%;
+}
+
+.resource-info {
+    display: inline-block;
+    height: 150px;
+    width: 65%;
+    margin: 15px 0px 0 30px;
+}

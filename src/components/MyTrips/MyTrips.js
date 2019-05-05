@@ -52,7 +52,7 @@ class MyTrips extends Component {
                                 <Button value={trip.id} name={trip.name} 
                                     // variant="outlined" 
                                     onClick={this.viewDetails(trip.id, trip.name)} >
-                                    <i class="material-icons md-18 view">view_list</i> 
+                                    <i class="material-icons md-18 view">list</i> 
                                     View Details
                                 </Button>
                             </div>
