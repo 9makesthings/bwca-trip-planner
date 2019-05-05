@@ -2,12 +2,12 @@ const trip = {
     tripDetails: {
         completed: null,
         description: '',
-        difficulty: 0,
+        difficulty: 3,
         distance: 0,
-        group_size: 0,
+        group_size: 2,
         image_url: '',
-        name: '',
-        number_days: 0,
+        name: null,
+        number_days: 2,
         route_name: '',
         trip_date: null
     },

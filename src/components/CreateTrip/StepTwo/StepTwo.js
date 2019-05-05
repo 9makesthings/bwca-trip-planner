@@ -12,7 +12,7 @@ import Card from '@material-ui/core/Card';
 class StepTwo extends Component {
 
     state = {
-        route_id: '',
+        route_id: null,
     }
 
     componentDidMount() {
@@ -67,7 +67,7 @@ class StepTwo extends Component {
                         </Card>
                     )}
 
-                <NextButton action={stepAction} />
+                <NextButton action={stepAction} routeId={this.state.route_id} />
             </div>
         );
     }

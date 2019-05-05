@@ -42,6 +42,8 @@ class NextButton extends Component {
 
     render() {
         const activeStep = this.props.reduxState.progress;
+        const tripName = this.props.tripName;
+        const routeId = this.props.routeId;
         const {classes} = this.props;
 
         return(
@@ -56,6 +58,7 @@ class NextButton extends Component {
                 <Button 
                     variant="contained" color="primary"
                     className={classes.button} 
+                    disabled={activeStep === 0 ? tripName === '' : routeId === null}
                     onClick={this.handleNext}>
                         {activeStep === 4 ? 'Save' : 'Next'}
                 </Button>

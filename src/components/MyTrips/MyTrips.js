@@ -50,8 +50,11 @@ class MyTrips extends Component {
 
                             <div className="details-button">
                                 <Button value={trip.id} name={trip.name} 
-                                    // variant="contained" color="primary"
-                                    onClick={this.viewDetails(trip.id, trip.name)} >View Details</Button>
+                                    // variant="outlined" 
+                                    onClick={this.viewDetails(trip.id, trip.name)} >
+                                    <i class="material-icons md-18 view">view_list</i> 
+                                    View Details
+                                </Button>
                             </div>
 
                             <div className="delete-button">

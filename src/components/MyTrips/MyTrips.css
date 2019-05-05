@@ -42,15 +42,18 @@ h1 {
 
 .details-button {
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .delete-button {
     float: right;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .material-icons.md-18 {
     font-size: 24px;
     color: #353232;
+}
+.material-icons.md-18.view {
+    margin: 0 5px 0 0;
 }

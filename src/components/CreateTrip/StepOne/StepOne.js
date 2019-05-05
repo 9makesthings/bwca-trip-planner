@@ -58,7 +58,7 @@ class StepOne extends Component {
                     <div className="step-one-q" >
                         <label>Name your trip:</label>
                         <TextField value={name}
-                                name="name"
+                                name="name" required
                                 className={classes.textField}
                                 onChange={this.handleChange} />
                     </div>
@@ -84,7 +84,7 @@ class StepOne extends Component {
                     <div className="step-one-q" >
                         <label>How relaxing or strenuous of a trip would you like to take?</label>
                         <div className="difficulty">
-                            <i class="material-icons">weekend</i>
+                            <i class="material-icons slide">weekend</i>
                             <div className="slider" >
                                 <Slider
                                     // classes={{ container: classes.slider }}
@@ -94,12 +94,12 @@ class StepOne extends Component {
                                     name="difficulty"
                                     onChange={this.handleSliderChange} />
                             </div>
-                            <i class="material-icons">rowing</i>
+                            <i class="material-icons slide">rowing</i>
                         </div>
                     </div>
                 </Card>
 
-                <NextButton action={stepAction} />
+                <NextButton action={stepAction} tripName={this.state.name} />
             </div>
         );
     }
