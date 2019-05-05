@@ -8,6 +8,7 @@ const equipmentReducer = (state = [], action ) => {
             let addItem = {
                 name: item.name,
                 code: item.code,
+                // type: item.type,
                 status: 'need'
             }
             equipment.push(addItem)

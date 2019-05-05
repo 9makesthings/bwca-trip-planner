@@ -45,10 +45,7 @@ class Packlist extends Component {
             trip_id: this.props.trip_id
         }
         this.props.dispatch( {type: 'UPDATE_PACKLIST', payload: saveData} );
-
-        console.log( `SAVE DATA:`, saveData );
         
-
         this.setState({
             ...this.state,
             editStateOff: !this.state.editStateOff
