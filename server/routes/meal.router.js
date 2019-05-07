@@ -87,6 +87,7 @@ router.put( '/:id', rejectUnauthenticated, (req, res) => {
 
         pool.query( sqlText, [ breakfast, lunch, dinner, trip_id, day ] )
             .then( (response) => {
+                console.log( `Mealplan updated` );
                 res.sendStatus(200);
             })
             .catch( (error) => {

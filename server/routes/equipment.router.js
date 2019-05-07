@@ -67,12 +67,11 @@ router.get('/packlist/:id', rejectUnauthenticated, (req, res) => {
 });
 
 // UPDATE packlist from ViewTripDetails page
-router.put( '/:id', rejectUnauthenticated, (req, res) => {
+router.put( '/:id', (req, res) => {
     let trip_id = req.params.id;
     let equipmentList = req.body;
-    console.log( `EQUIPMENT:`, req.body.packlist );
+    // console.log( `EQUIPMENT:`, req.body.packlist );
     
-
     for( let i=0; i < equipmentList.length; i++ ){
         
         let name = equipmentList[i].name;
@@ -85,6 +84,7 @@ router.put( '/:id', rejectUnauthenticated, (req, res) => {
 
         pool.query( sqlText, [ status, trip_id, name ] )
             .then( (response) => {
+                console.log( `Equipment updated` );
                 res.sendStatus(200);
             })
             .catch( (error) => {

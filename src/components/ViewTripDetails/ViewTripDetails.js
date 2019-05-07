@@ -52,7 +52,7 @@ class ViewDetails extends Component {
     autofillForm = () => {
         this.setState({
             ...this.state,
-            notes: 'Almost ready for the trip! Just a few items left to pack.',
+            notes: `Got our permit for June 21 on Duncan Lake. \nAlmost ready for the trip now, just a few items left to pack!`,
         })
     }
 

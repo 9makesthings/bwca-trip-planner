@@ -33,7 +33,6 @@ class StepOne extends Component {
                 ...this.state,
                 [property]: value,
         })
-        // console.log( `Current state:`, this.state );
     }
     
     handleSliderChange = (event, difficulty) => {
@@ -68,7 +67,7 @@ class StepOne extends Component {
                         <TextField type="number" min="1" max="9"
                                 value={group_size}
                                 name="group_size" 
-                                className={classes.textField}
+                                className={classes.numTextField}
                                 onChange={this.handleChange} />
                     </div>
 
@@ -77,7 +76,7 @@ class StepOne extends Component {
                         <TextField type="number" min="2" max="20"
                                 value={number_days}
                                 name="number_days" 
-                                className={classes.textField}
+                                className={classes.numTextField}
                                 onChange={this.handleChange} />
                     </div>
 
@@ -87,7 +86,6 @@ class StepOne extends Component {
                             <i class="material-icons slide">weekend</i>
                             <div className="slider" >
                                 <Slider
-                                    // classes={{ container: classes.slider }}
                                     min={1} max={5} 
                                     step={1}
                                     value={difficulty}
@@ -114,9 +112,15 @@ const styles = theme => ({
       width: 800,
     },
     textField: {
-      marginLeft: theme.spacing.unit,
+      marginLeft: 10,
       marginRight: theme.spacing.unit,
       width: 200,
+    },
+    numTextField: {
+      marginLeft: 10,
+      marginRight: theme.spacing.unit,
+      width: 50,
+      textAlign: 'center'
     },
   });  
 
