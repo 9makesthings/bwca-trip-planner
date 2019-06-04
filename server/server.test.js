@@ -8,15 +8,15 @@ describe( `Test the root path`, () => {
         expect( response.statusCode ).toBe( 200 );
     })
 
-    test( `Test user route requires authentication`, async () => {
-        const response = await testServer(app).get('/api/user/');
-        expect( response.statusCode ).toBe( 403 );
-    })
+    // test( `Test user route requires authentication`, async () => {
+    //     const response = await testServer(app).get('/api/user/');
+    //     expect( response.statusCode ).toBe( 403 );
+    // })
 
-    // This won't work unless we build
-    test( `Test main HTML page comes back`, async () => {
-        const response = await testServer(app).get('/');
-        expect( response.statusCode ).toBe( 200 );
-        expect( response.text ).toContain( 'react-root' );
-    })
+    // // This won't work unless we build
+    // test( `Test main HTML page comes back`, async () => {
+    //     const response = await testServer(app).get('/');
+    //     expect( response.statusCode ).toBe( 200 );
+    //     expect( response.text ).toContain( 'react-root' );
+    // })
 })

@@ -21,7 +21,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     pool.query( sqlText, [user_id, name, number_days, group_size, difficulty, route_id] )
         .then( (result) => {
             res.send( result.rows );
-            pool.query
         })
         .catch( (error) => {
             console.log( `Couldn't save trip.`, error );

@@ -65,12 +65,12 @@ class MealPlan extends Component {
         console.log( `MEALS`, this.state.mealPlan );
     }
 
-    autofillForm = () => {
-        this.setState({
-            ...this.state, 
-            mealPlan: [{"day":1,"breakfast":"","lunch":"Beef Sticks & Cheese","dinner":"Pad Thai"},{"day":2,"breakfast":"Pancake Mix","lunch":"Tortillas, PB & J","dinner":"Chili Mac"},{"day":3,"breakfast":"Breakfast Skillet","lunch":"Trail Mix","dinner":"Chicken Fajita Bowl"},{"day":4,"breakfast":"Instant Oatmeal","lunch":"Tortillas, PB & J","dinner":""}]
-        })
-    }
+    // autofillForm = () => {
+    //     this.setState({
+    //         ...this.state, 
+    //         mealPlan: [{"day":1,"breakfast":"","lunch":"Beef Sticks & Cheese","dinner":"Pad Thai"},{"day":2,"breakfast":"Pancake Mix","lunch":"Tortillas, PB & J","dinner":"Chili Mac"},{"day":3,"breakfast":"Breakfast Skillet","lunch":"Trail Mix","dinner":"Chicken Fajita Bowl"},{"day":4,"breakfast":"Instant Oatmeal","lunch":"Tortillas, PB & J","dinner":""}]
+    //     })
+    // }
 
     render() {
         const stepAction = {type: 'SET_MEALPLAN', payload: this.state};
@@ -138,9 +138,9 @@ class MealPlan extends Component {
                         </TableBody>
                     </Table>
 
-                    <div 
+                    {/* <div 
                         className="autofill" 
-                        onClick={this.autofillForm}> </div>
+                        onClick={this.autofillForm}> </div> */}
                 </Card>
 
                 <NextButton action={stepAction} />

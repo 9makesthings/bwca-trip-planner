@@ -3,6 +3,8 @@ const filledForm = [{"name":"Tent","code":1,"status":"have"},{"name":"Tarp","cod
 
 const equipmentReducer = (state = [], action ) => {
     if( action.type === 'SET_EQUIPMENT' ){
+
+
         let equipment = [];
         for( let item of action.payload ){
             let addItem = {
@@ -14,6 +16,9 @@ const equipmentReducer = (state = [], action ) => {
             equipment.push(addItem)
         }
         return equipment;
+
+
+        
     } else if ( action.type === 'SAVE_EQUIPMENT' ){
         return action.payload;
     } else if ( action.type === 'RESET_TRIP_DATA' ){
