@@ -37,7 +37,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "jest": "^24.8.0",
     "nodemon": "^1.18.10",
     "supertest": "^4.0.2"
   },
