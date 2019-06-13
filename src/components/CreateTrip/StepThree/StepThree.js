@@ -17,44 +17,10 @@ class StepThree extends Component {
         equipment: this.props.reduxState.equipment || [],
     }
 
-    // componentDidMount() {
-    //     this.props.dispatch( {type: 'GET_EQUIPMENT'});
-    //         // create temporary new object
-    //         // let equipObject = {};
-
-    //         // for(let i = 0; i < this.props.reduxState.equipment.length; i++) {
-    //         //     let item = this.props.reduxState.equipment[i];
-    //         //     console.log( 'item:', item );
-    //         //     // create a property with the item code as the "name"/"key"
-    //         //     equipObject[item.code] = {
-    //         //         name: item.name,
-    //         //         code: item.code, 
-    //         //         status: false,
-    //         //     };
-    //         // }
-    //         // console.log( equipObject );
-            
-    //         // this.setState({
-    //         //     equipment: equipObject,
-    //         // });
-
-    //         // console.log( `componentDidUpdate... current state:`, this.state );
-    // }
-
-    // componentDidUpdate(prevProps){
-    //     if(this.props.reduxState.equipment !== prevProps.equipment){
-    //         this.setState({
-    //             equipment: this.props.reduxState.equipment
-    //         })
-    //     } 
-    // }
-
     handlechange = (i) => (event) => {
-        // console.log( `in handleChange...`, this.state );
-        // console.log( `status of item:`, event.target.value );
-        
         let newPacklist = [...this.state.equipment];
         let newStatus;
+
         if(event.target.value === 'need'){
             newStatus = 'have';
         } else {
@@ -69,11 +35,10 @@ class StepThree extends Component {
         })
     }
 
-    autofillForm = () => {
-        this.props.dispatch({type: 'AUTOFILL_PACKLIST'});
-    }
+    // autofillForm = () => {
+    //     this.props.dispatch({type: 'AUTOFILL_PACKLIST'});
+    // }
     
-
     render() {
         const stepAction = {type: 'SAVE_EQUIPMENT', payload: this.props.reduxState.equipment};
         let packlist;
@@ -111,9 +76,9 @@ class StepThree extends Component {
                         {packlist}
 
                     </div>
-                    <div 
+                    {/* <div 
                         className="autofill" 
-                        onClick={this.autofillForm}> </div>
+                        onClick={this.autofillForm}> </div> */}
                 </Card>
 
                 <NextButton action={stepAction} />

@@ -15,7 +15,9 @@ class Packlist extends Component {
         editStateOff: true 
     }
 
-    handlechange = (i) => (event) => {        
+    handlechange = (i) => (event) => {
+        console.log( `in checkbox click:`, i, event.target.value );
+             
         let newPacklist = [...this.props.reduxState.tripDetails.packlist];
         let newStatus;
         if(event.target.value === 'need'){
@@ -25,11 +27,9 @@ class Packlist extends Component {
         }
 
         newPacklist[i].status = newStatus;
+        console.log( `Updated packlist:`, newPacklist );
         
-        this.setState({
-            ...this.state,
-            packlist: newPacklist
-        })
+        this.props.dispatch( {type: 'SET_PACKLIST', payload: newPacklist} );
     }
     
     handleEdit = (event) => {
@@ -41,7 +41,7 @@ class Packlist extends Component {
 
     handleSave = () => {
         const saveData = {
-            packlist: this.state.packlist,
+            packlist: this.props.reduxState.tripDetails.packlist,
             trip_id: this.props.trip_id
         }
         this.props.dispatch( {type: 'UPDATE_PACKLIST', payload: saveData} );
@@ -57,6 +57,7 @@ class Packlist extends Component {
         const tripPacklist = this.props.reduxState.tripDetails.packlist;
         let packlist;
         let button;
+
         if(this.state.editStateOff === true){
             if(tripPacklist){
                 button = <Button variant="outlined"
@@ -74,11 +75,11 @@ class Packlist extends Component {
             } else {
                 packlist = null;
             } // end conditionally rendering disable checklist of items user needs for trip
-        } else {
+        } else if(this.state.editStateOff === false) {
             if(tripPacklist){
                 button = <Button variant="contained" color="primary" 
-                    className={classes.button}
-                    onClick={this.handleSave} >Save</Button>
+                        className={classes.button}
+                        onClick={this.handleSave} >Save</Button>
                 packlist = tripPacklist.map((item, i) => {
                         let currentStatus = false;    
                         if(item.status === 'have'){

@@ -61,7 +61,9 @@ class StepTwo extends Component {
                                         variant={this.state.route_id != route.id ? "outlined" : "contained"}
                                         name={route} value={route.id}
                                         disabled={this.state.route_id === route.id}
-                                        onClick={this.addRoute} >{this.state.route_id != route.id ? 'Select Route' : 'Route Selected!'}</Button>
+                                        onClick={this.addRoute} 
+                                        >{this.state.route_id != route.id ? 'Select Route' : 'Route Selected!'}
+                                    </Button>
                                 </div>
                             </div>
                         </Card>

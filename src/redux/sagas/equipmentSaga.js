@@ -14,7 +14,7 @@ function* getEquipment() {
 
 function* updatePacklist(action) {
     try {
-        yield axios.put( `/api/equipment/${action.payload.trip_id}`, action.payload );
+        yield axios.put( `/api/equipment`, action.payload );
         yield put( {type: 'GET_TRIP_DETAILS', payload: action.payload.trip_id} );
     }
     catch (error) {

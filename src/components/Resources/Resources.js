@@ -20,26 +20,26 @@ class Resources extends Component {
                     Here are some outfitters than can provide additional help with planning your next trip to the Boundary Waters.
                 </p>
 
-                {outfitter.map( outfitter => 
-                        <Card key={outfitter.id} className="resource-card" >
-                            <div className="resource-card-div" >
-                                <div className="resource-img" >
-                                    <img src={outfitter.image} alt={outfitter.name} />
-                                </div>
-
-                                <div className="resource-info" >
-                                    <h3>{outfitter.name}</h3>
-
-                                    <p>{outfitter.city}
-                                    <br/>{outfitter.phone}
-                                    <br/>{outfitter.email}
-                                    <br/><a href={outfitter.website}>Website</a>
-                                    </p>
-                                </div>
-
+                {outfitter.map( (outfitter, i) => 
+                    <Card key={i} className="resource-card" >
+                        <div className="resource-card-div" >
+                            <div className="resource-img" >
+                                <img src={outfitter.image} alt={outfitter.name} />
                             </div>
-                        </Card>
-                    )}
+
+                            <div className="resource-info" >
+                                <h3>{outfitter.name}</h3>
+
+                                <p>{outfitter.city}
+                                <br/>{outfitter.phone}
+                                <br/>{outfitter.email}
+                                <br/><a href={outfitter.website}>Website</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </Card>
+                )}
             </div>
         );
     }

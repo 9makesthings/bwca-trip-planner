@@ -69,31 +69,40 @@ router.get('/meal_details/:id', rejectUnauthenticated, (req, res) => {
 });
 
 
-router.put( '/:id', rejectUnauthenticated, (req, res) => {
+router.put( '/:id', rejectUnauthenticated, async(req, res) => {
+    const client = await pool.connect();
+
     let trip_id = req.params.id;
     let mealplan = req.body.mealPlan;
 
-    for( let i=0; i < mealplan.length; i++ ){
-        
-        let day = mealplan[i].day;
-        let breakfast = mealplan[i].breakfast;
-        let lunch = mealplan[i].lunch;
-        let dinner = mealplan[i].dinner;
+    try {
+        await client.query('BEGIN');
 
-        let sqlText = `UPDATE "meal_plan" 
-                        SET "breakfast" = $1, "lunch" = $2, "dinner" = $3
-                        WHERE "trip_plan_id" = $4
-                        AND "day" = $5;`;
+        for( let i=0; i < mealplan.length; i++ ){
+            console.log( `in mealplan for loop` );
+            
+            let day = mealplan[i].day;
+            let breakfast = mealplan[i].breakfast;
+            let lunch = mealplan[i].lunch;
+            let dinner = mealplan[i].dinner;
 
-        pool.query( sqlText, [ breakfast, lunch, dinner, trip_id, day ] )
-            .then( (response) => {
-                console.log( `Mealplan updated` );
-                res.sendStatus(200);
-            })
-            .catch( (error) => {
-                console.log( `Couldn't save meal plan.`, error );
-                res.sendStatus(500);
-            })
+            let sqlText = `UPDATE "meal_plan" 
+                            SET "breakfast" = $1, "lunch" = $2, "dinner" = $3
+                            WHERE "trip_plan_id" = $4
+                            AND "day" = $5;`;
+
+            await client.query( sqlText, [ breakfast, lunch, dinner, trip_id, day ] );
+        }
+
+        await client.query('COMMIT');
+        console.log( `Mealplan updated` );
+        res.sendStatus(200);
+    } catch(error) {   
+        await client.query('ROLLBACK');
+        console.log( `Couldn't save meal plan.`, error );
+        res.sendStatus(500);
+    } finally {
+        client.release()
     }
 })
 

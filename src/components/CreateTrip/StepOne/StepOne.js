@@ -83,7 +83,7 @@ class StepOne extends Component {
                     <div className="step-one-q" >
                         <label>How relaxing or strenuous of a trip would you like to take?</label>
                         <div className="difficulty">
-                            <i class="material-icons slide">weekend</i>
+                            <i className="material-icons slide">weekend</i>
                             <div className="slider" >
                                 <Slider
                                     min={1} max={5} 
@@ -92,7 +92,7 @@ class StepOne extends Component {
                                     name="difficulty"
                                     onChange={this.handleSliderChange} />
                             </div>
-                            <i class="material-icons slide">rowing</i>
+                            <i className="material-icons slide">rowing</i>
                         </div>
                     </div>
                 </Card>

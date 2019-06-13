@@ -67,30 +67,34 @@ router.get('/packlist/:id', rejectUnauthenticated, (req, res) => {
 });
 
 // UPDATE packlist from ViewTripDetails page
-router.put( '/:id', (req, res) => {
-    let trip_id = req.params.id;
-    let equipmentList = req.body;
-    // console.log( `EQUIPMENT:`, req.body.packlist );
-    
-    for( let i=0; i < equipmentList.length; i++ ){
-        
-        let name = equipmentList[i].name;
-        let status = equipmentList[i].status;
-        
-        let sqlText = `UPDATE "packlist"
-                    SET "status" = $1
-                    WHERE "trip_plan_id" = $2
-                    AND "equipment_name" = $3;`;
+router.put( '/', rejectUnauthenticated, async(req, res) => {
+    const client = await pool.connect();
 
-        pool.query( sqlText, [ status, trip_id, name ] )
-            .then( (response) => {
-                console.log( `Equipment updated` );
-                res.sendStatus(200);
-            })
-            .catch( (error) => {
-                console.log( `Couldn't save updated packlist.`, error );
-                res.sendStatus(500);
-            })
+    let equipmentList = req.body.packlist;
+
+    try {
+        await client.query('BEGIN');
+
+        for( let i=0; i < equipmentList.length; i++ ){
+            
+            let id = equipmentList[i].id;
+            let status = equipmentList[i].status;
+            
+            let sqlText = `UPDATE "packlist"
+                        SET "status" = $1
+                        WHERE "id" = $2;`;
+
+            await client.query( sqlText, [ status, id ] );
+        }
+
+        await client.query('COMMIT');
+        res.sendStatus(200);
+    } catch(error) {   
+        await client.query('ROLLBACK');
+        console.log( `Couldn't save updated packlist.`, error );
+        res.sendStatus(500);
+    } finally {
+        client.release()
     }
 })
 

@@ -52,7 +52,7 @@ class MyTrips extends Component {
                                 <Button value={trip.id} name={trip.name} 
                                     // variant="outlined" 
                                     onClick={this.viewDetails(trip.id, trip.name)} >
-                                    <i class="material-icons md-18 view">list</i> 
+                                    <i className="material-icons md-18 view">list</i> 
                                     View Details
                                 </Button>
                             </div>
@@ -60,7 +60,7 @@ class MyTrips extends Component {
                             <div className="delete-button">
                                 <Button value={trip.id}
                                     onClick={this.handleDelete} >
-                                        <i class="material-icons md-18">delete_outline</i>
+                                        <i className="material-icons md-18">delete_outline</i>
                                     </Button>
                             </div>
                         </Card>

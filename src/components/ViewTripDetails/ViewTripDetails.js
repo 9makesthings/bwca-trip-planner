@@ -17,10 +17,9 @@ class ViewDetails extends Component {
     }
 
     componentDidMount(){
-        // console.log( `History props:`, this.props.location.search );
         let query = this.props.location.search;
         let id = query.substr(1);
-        console.log( `id is:`, id );
+        
         this.props.dispatch( {type: 'GET_TRIP_DETAILS', payload: id} );
 
         this.setState({
@@ -49,12 +48,12 @@ class ViewDetails extends Component {
         })
     }
 
-    autofillForm = () => {
-        this.setState({
-            ...this.state,
-            notes: `Got our permit for June 21 on Duncan Lake. \nAlmost ready for the trip now, just a few items left to pack!`,
-        })
-    }
+    // autofillForm = () => {
+    //     this.setState({
+    //         ...this.state,
+    //         notes: `Got our permit for June 21 on Duncan Lake. \nAlmost ready for the trip now, just a few items left to pack!`,
+    //     })
+    // }
 
     render() {
         const { classes } = this.props;
@@ -105,7 +104,7 @@ class ViewDetails extends Component {
                         className={classes.textField}
                         value={this.state.notes}
                         onChange={this.handleChange('notes')}
-                        onClick={this.autofillForm}
+                        // onClick={this.autofillForm}
                         margin="normal"
                     />
 
