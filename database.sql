@@ -70,6 +70,21 @@ CREATE TABLE "meal_plan" (
 );
 
 
+-- OUTFITTER DATA --
+INSERT INTO "outfitter" ("name", "city", "phone", "image_url", "website", "email")
+VALUES ('Bearskin Wilderness Outfitters', 'Gunflint Trail', '(218)388-2292', 'https://photos.bwca.com/b/BEARSKIN%20LODGE-220212-140012.JPG', 'http://www.bearskinoutfitters.com/', 'Outfitters@Bearskin.com'),
+	('Clearwater Canoe Outfitters & Lodge', 'Gunflint Trail', '(218)388-2254', 'https://photos.bwca.com/a/ADMIN-030616-183123.JPG', 'http://www.clearwateroutfitters.com/', 'info@clearwaterhistoriclodge.com'),
+	('Hungry Jack Canoe Outfitters and Cabins', 'Gunflint Trail', '(218) 388-2275', 'https://photos.bwca.com/a/ADMIN-290113-061056.JPG', 'http://www.hjo.com/', 'info@hjo.com'),
+	('Voyageur Canoe Outfitters', 'Gunflint Trail', '(218)388-2224', 'https://photos.bwca.com/a/ADMIN-280513-071016.JPG', 'https://voyageurcanoeoutfitters.com/', 'vco@voyageurcanoeoutfitters.com'),
+	
+	('Cliff Wolds Outfitting Co.', 'Ely', '(218)365-3267', 'https://photos.bwca.com/c/CLIFFWOLDS-240812-124854.JPG', 'http://www.cliffwolds.com/', 'info@cliffwolds.com'),
+	('Ely Outfitting Company', 'Ely', '(218)343-7951', 'https://photos.bwca.com/b/BOUNDARYWATERSGUIDE-050411-122832.JPG', 'http://www.elyoutfittingcompany.com/', 'info@elyoutfittingcompany.com'),
+	('Packsack Canoe Trips & Log Cabins', 'Ely', '1(800)365-3788', 'https://photos.bwca.com/p/PACKSACK-210817-124741.JPG', 'http://www.packsackcanoetrips.com/', 'nick-danielle@packsackcanoetrips.com'),
+	
+	('Sawtooth Outfitters', 'Tofte', '(218)663-7643', 'https://photos.bwca.com/a/ADMIN-040612-141256.JPG', 'http://www.sawtoothoutfitters.com/', 'info@sawtoothoutfitters.com')
+;
+
+
 -- ROUTE DATA --
 INSERT INTO "route" ("name", "distance", "min_days", "max_days", "difficulty", "description", "image_url")
 VALUES ('Brule Lake Loop', 41, 4, 7, 4, 'Begin at our dock paddle through Poplar, Lizz, Caribou, Horseshoe, Gaskin to Winchell. From Winchell paddle to Brule through Wanihigan, Grassy and Mulligan Lakes. Then return to Winchell through the Cones and Cliff Lakes. Cliff lake lives up to its name and truly is surrounded by cliffs. From Winchell, return to our dock through Omega, Henson, Pillsbury, and Allen to Horseshoe, caribou, Lizz, and Poplar. With the exception of Winchell and Brule, most of the lakes along this route are small. Portages are fairly easy and well traveled with the exception of a couple longer ones out of Wanihigan Lake.', 'https://images.unsplash.com/photo-1550594427-417e0a74911f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
