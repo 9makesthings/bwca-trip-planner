@@ -20,7 +20,7 @@ class MealPlanDetails extends Component {
     }
 
     handleChange = (i, name) => (event) => {
-        console.log( `MEALPLAN STATE`, this.state );
+        // console.log( `MEALPLAN STATE`, this.state );
         
         let newMealPlan = [...this.props.reduxState.tripDetails.mealPlan];
         

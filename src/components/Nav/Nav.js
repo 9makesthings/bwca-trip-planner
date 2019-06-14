@@ -6,7 +6,7 @@ import './Nav.css';
 
 const Nav = (props) => {
 
-  console.log( `current props:`, props );
+  // console.log( `current props:`, props );
   
 
 return(

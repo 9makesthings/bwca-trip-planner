@@ -21,7 +21,7 @@ class StepOne extends Component {
     };
 
     componentDidMount(){
-        console.log( `user id:`, this.props.reduxState.user.id );
+        // console.log( `user id:`, this.props.reduxState.user.id );
         
     }
 

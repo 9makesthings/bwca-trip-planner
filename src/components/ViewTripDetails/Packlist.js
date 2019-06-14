@@ -16,7 +16,7 @@ class Packlist extends Component {
     }
 
     handlechange = (i) => (event) => {
-        console.log( `in checkbox click:`, i, event.target.value );
+        // console.log( `in checkbox click:`, i, event.target.value );
              
         let newPacklist = [...this.props.reduxState.tripDetails.packlist];
         let newStatus;
@@ -27,7 +27,7 @@ class Packlist extends Component {
         }
 
         newPacklist[i].status = newStatus;
-        console.log( `Updated packlist:`, newPacklist );
+        // console.log( `Updated packlist:`, newPacklist );
         
         this.props.dispatch( {type: 'SET_PACKLIST', payload: newPacklist} );
     }

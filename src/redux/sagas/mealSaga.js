@@ -15,7 +15,7 @@ function* getMealPlan(action) {
 
 function* saveMealPlan(action) {
     try {
-        console.log( `saving mealplan, tripId?`, action.payload );
+        // console.log( `saving mealplan, tripId?`, action.payload );
 
         yield axios.post( `/api/meal/${action.payload.tripId}`, action.payload.mealPlan );
     }

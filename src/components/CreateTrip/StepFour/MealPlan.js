@@ -29,7 +29,7 @@ class MealPlan extends Component {
     createMealPlan = () => {
         const days = this.props.reduxState.tripInputs.number_days;
         const currentPlan = this.props.reduxState.mealPlan.mealPlan;
-        console.log( `currentPlan:`, currentPlan );
+        // console.log( `currentPlan:`, currentPlan );
 
         if( currentPlan === undefined ){
             let mealPlanArray = [];
@@ -62,7 +62,7 @@ class MealPlan extends Component {
             ...this.state,
             mealPlan: newMealPlan
         })
-        console.log( `MEALS`, this.state.mealPlan );
+        // console.log( `MEALS`, this.state.mealPlan );
     }
 
     // autofillForm = () => {

@@ -3,9 +3,9 @@ import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 function* saveNewTrip(action) {
     try {
-        console.log( `in saveNewTrip...` );
+        // console.log( `in saveNewTrip...` );
         const response = yield axios.post( '/api/trip', action.payload.tripData );
-        console.log( `Trip Id response?:`, response.data[0].id );
+        // console.log( `Trip Id response?:`, response.data[0].id );
         yield axios.post( `/api/meal/${response.data[0].id}`, action.payload.mealPlan );
         yield axios.post(`/api/equipment/${response.data[0].id}`, action.payload.equipment);
     }
@@ -30,7 +30,7 @@ function* getUsersTrips(action) {
 function* deleteTrip(action) {
     try {
         yield axios.delete( `/api/trip/${action.payload.trip_id}` );
-        console.log( `user id:`, action.payload.user_id );
+        // console.log( `user id:`, action.payload.user_id );
         yield put( {type: 'GET_USER_TRIPS', payload: action.payload.user_id} );
     }
     catch (error) {
